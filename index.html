@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root{
+    :root {
       --museum-black:#0b0908;
       --museum-gold:#c6a86a;
       --museum-gold-dark:#8e6f3e;
@@ -216,7 +216,7 @@
     }
     .toolbar input,.toolbar select{
       min-height:46px;border:1px solid rgba(198,168,106,.35);border-radius:12px;background:rgba(255,255,255,.75);
-      color:var(--text);outline:none;padding:12px 14px;
+      color:var(--ink);outline:none;padding:12px 14px;
     }
     .toolbar input{min-width:260px}
     .toolbar select{min-width:200px}
@@ -344,7 +344,7 @@
     .admin-panel-header h2{margin:0;font-family:var(--heading-font);font-size:2.4rem;line-height:1}
     .admin-panel-body{display:grid;grid-template-columns:230px 1fr;min-height:0}
     .admin-tabs{background:rgba(247,241,227,.9);border-left:1px solid rgba(198,168,106,.12);padding:12px 10px;display:flex;flex-direction:column;gap:8px}
-    .tab-btn{border:none;background:transparent;padding:12px 12px;border-radius:12px;text-align:right;font-weight:700;color:var(--text);cursor:pointer}
+    .tab-btn{border:none;background:transparent;padding:12px 12px;border-radius:12px;text-align:right;font-weight:700;color:var(--ink);cursor:pointer}
     .tab-btn.active{background:var(--museum-black);color:#fff}
     .admin-content{padding:18px;overflow:auto}
     .tab-pane{display:none}
@@ -400,7 +400,7 @@
     .order-head h3{margin:0;font-family:var(--heading-font);font-size:2.3rem;color:var(--museum-black)}
     .order-form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
     .field label{font-size:.82rem;color:rgba(29,23,19,.8);font-weight:800}
-    .field input,.field select,.field textarea{min-height:48px;border:1px solid rgba(198,168,106,.38);background:rgba(255,255,255,.6);border-radius:12px;padding:12px 14px;resize:vertical;outline:none;color:var(--text)}
+    .field input,.field select,.field textarea{min-height:48px;border:1px solid rgba(198,168,106,.38);background:rgba(255,255,255,.6);border-radius:12px;padding:12px 14px;resize:vertical;outline:none;color:var(--ink)}
     .order-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:20px}
     .secondary-action{background:rgba(198,168,106,.15);color:var(--museum-black);border:none;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}
 
@@ -536,10 +536,10 @@
         <div class="toolbar">
           <input id="searchInput" type="text" placeholder="ابحث عن منتج..." />
           <select id="sortSelect">
-            <option>الاسم</option>
-            <option>السعر الأعلى</option>
-            <option>السعر الأقل</option>
-            <option>الأحدث</option>
+            <option value="الاسم">الاسم</option>
+            <option value="السعر الأعلى">السعر الأعلى</option>
+            <option value="السعر الأقل">السعر الأقل</option>
+            <option value="الأحدث">الأحدث</option>
           </select>
         </div>
 
@@ -1009,7 +1009,7 @@
               <input id="videoInput" placeholder="رابط فيديو MP4 أو URL" />
             </div>
             <div class="field full">
-              <label>صورة "حكاية الصنعة"</label>
+              <label>صورة \"حكاية الصنعة\"</label>
               <div style="display:flex;gap:10px;align-items:center;">
                 <input id="storyImageFile" type="file" accept="image/*" />
                 <button type="button" class="save-btn" id="uploadStoryImageBtn">رفع صورة</button>
@@ -1026,11 +1026,11 @@
           <div class="admin-grid">
             <div class="field full">
               <label>خيارات الشحن</label>
-              <textarea id="shippingTextArea" rows="8" placeholder="داخل الكويت | 0 | توصيل سريع 2-4 أيام&#10;دول الخليج | 3.000 | 10-15 يوم&#10;شحن عالمي | 10.000 | شحن جوي وبحري&#10;استلام من الفرع | 0 | فوري"></textarea>
+              <textarea id="shippingTextArea" rows="8"></textarea>
             </div>
             <div class="field full">
               <label>ملاحظة الشحن</label>
-              <textarea id="shippingNoteField" rows="3" placeholder="أصالة مدى الحياة — من صميم التراث المصري"></textarea>
+              <textarea id="shippingNoteField" rows="3"></textarea>
             </div>
           </div>
           <div class="admin-actions">
@@ -1078,9 +1078,8 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "asala_store_v3";
+    const STORE_KEY = "asala_store_v3";
     const ADMIN_KEY = "asala_admin_v3";
-    const IMGBB_API_KEY = "YOUR_IMGBB_API_KEY";
 
     const defaultStore = {
       settings: {
@@ -1140,9 +1139,9 @@
 
     function loadStore() {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY);
+        const raw = localStorage.getItem(STORE_KEY);
         if (!raw) {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultStore));
+          localStorage.setItem(STORE_KEY, JSON.stringify(defaultStore));
           return JSON.parse(JSON.stringify(defaultStore));
         }
         const parsed = JSON.parse(raw);
@@ -1166,9 +1165,11 @@
       }
     }
 
-    function saveStore() { localStorage.setItem(STORAGE_KEY, JSON.stringify(appState)); }
+    function saveStore() {
+      localStorage.setItem(STORE_KEY, JSON.stringify(appState));
+    }
 
-    function showNotice(message) {
+    function showNotice(message){
       const box = document.getElementById("noticeBox");
       box.textContent = message;
       box.classList.add("show");
@@ -1186,7 +1187,7 @@
       return Math.round(((Number(oldPrice)-Number(newPrice))/Number(oldPrice))*100);
     }
 
-    function applyDesign() {
+    function applyDesign(){
       const d = appState.design;
       document.documentElement.style.setProperty("--museum-black", d.primary || "#0b0908");
       document.documentElement.style.setProperty("--museum-gold", d.gold || "#c6a86a");
@@ -1201,29 +1202,42 @@
       });
     }
 
-    function getFilteredProducts() {
+    function getFilteredProducts(){
       let items = [...appState.products];
-      if (appState.filters.category !== "الكل") items = items.filter(p => p.category === appState.filters.category);
+
+      if (appState.filters.category !== "الكل") {
+        items = items.filter(p => p.category === appState.filters.category);
+      }
+
       if (appState.filters.search) {
         const q = appState.filters.search.toLowerCase();
-        items = items.filter(p => (p.name || "").toLowerCase().includes(q) || (p.category || "").toLowerCase().includes(q) || (p.description || "").toLowerCase().includes(q));
+        items = items.filter(p => {
+          return (p.name || "").toLowerCase().includes(q) ||
+                 (p.category || "").toLowerCase().includes(q) ||
+                 (p.description || "").toLowerCase().includes(q);
+        });
       }
+
       if (appState.filters.sort === "السعر الأعلى") items.sort((a,b) => b.price - a.price);
       else if (appState.filters.sort === "السعر الأقل") items.sort((a,b) => a.price - b.price);
       else if (appState.filters.sort === "الأحدث") items.sort((a,b) => b.id - a.id);
       else items.sort((a,b) => a.name.localeCompare(b.name, "ar"));
+
       return items;
     }
 
-    function renderProducts() {
+    function renderProducts(){
       const categories = ["الكل", ...new Set(appState.products.map(p => p.category))];
       const chipRow = document.getElementById("chipRow");
-      chipRow.innerHTML = categories.map(cat => `<button class="chip ${appState.filters.category === cat ? "active" : ""}" data-category="${cat}">${cat}</button>`).join("");
+      chipRow.innerHTML = categories.map(cat =>
+        `<button class="chip ${appState.filters.category === cat ? "active" : ""}" data-category="${cat}">${cat}</button>`
+      ).join("");
 
       document.querySelectorAll("[data-category]").forEach(btn => {
         btn.addEventListener("click", () => {
           appState.filters.category = btn.dataset.category;
-          saveStore(); renderProducts();
+          saveStore();
+          renderProducts();
         });
       });
 
@@ -1280,8 +1294,7 @@
 
       document.querySelectorAll(".product-card").forEach(card => {
         card.addEventListener("click", (e) => {
-          const stop = e.target.closest("button");
-          if (stop) return;
+          if (e.target.closest("button")) return;
           const prodId = Number(card.dataset.productId);
           incrementViews(prodId);
         });
@@ -1290,7 +1303,7 @@
       renderCart();
     }
 
-    function incrementViews(id) {
+    function incrementViews(id){
       const product = appState.products.find(p => p.id === id);
       if (!product) return;
       product.views = Number(product.views || 0) + 1;
@@ -1298,22 +1311,25 @@
       renderProducts();
     }
 
-    function addToCart(id) {
+    function addToCart(id){
       const item = appState.cart.find(x => x.id === id);
       if (item) item.qty += 1;
-      else appState.cart.push({ id, qty: 1 });
-      saveStore(); renderCart();
+      else appState.cart.push({ id, qty:1 });
+      saveStore();
+      renderCart();
+      showNotice("تمت إضافة المنتج للسلة");
     }
 
-    function changeQty(id, delta) {
+    function changeQty(id, delta){
       const item = appState.cart.find(x => x.id === id);
       if (!item) return;
       item.qty += delta;
       if (item.qty <= 0) appState.cart = appState.cart.filter(x => x.id !== id);
-      saveStore(); renderCart();
+      saveStore();
+      renderCart();
     }
 
-    function renderCart() {
+    function renderCart(){
       const items = appState.cart.map(item => {
         const product = appState.products.find(p => p.id === item.id);
         return product ? { ...item, product } : null;
@@ -1345,13 +1361,8 @@
       const total = items.reduce((sum, item) => sum + (item.product.price * item.qty), 0);
       document.getElementById("totalCart").textContent = formatKwd(total);
 
-      document.querySelectorAll("[data-add-qty]").forEach(btn => {
-        btn.addEventListener("click", () => changeQty(Number(btn.dataset.addQty), 1));
-      });
-
-      document.querySelectorAll("[data-remove]").forEach(btn => {
-        btn.addEventListener("click", () => changeQty(Number(btn.dataset.remove), -1));
-      });
+      document.querySelectorAll("[data-add-qty]").forEach(btn => btn.addEventListener("click", () => changeQty(Number(btn.dataset.addQty), 1)));
+      document.querySelectorAll("[data-remove]").forEach(btn => btn.addEventListener("click", () => changeQty(Number(btn.dataset.remove), -1)));
     }
 
     function openCart(){ document.getElementById("cartDrawer").classList.add("open"); document.getElementById("cartBackdrop").classList.add("open"); }
@@ -1359,9 +1370,15 @@
     function openOrderModal(){ if (!appState.cart.length) return; document.getElementById("orderModal").classList.add("open"); closeCart(); }
     function closeOrderModal(){ document.getElementById("orderModal").classList.remove("open"); }
     function openGallery(src){ document.getElementById("galleryImage").src = src; document.getElementById("galleryModal").classList.add("open"); }
-    function getCartTotal(){ return appState.cart.reduce((sum, item) => { const p = appState.products.find(x => x.id === item.id); return sum + (p ? p.price * item.qty : 0); }, 0); }
 
-    function renderAdminTable() {
+    function getCartTotal(){
+      return appState.cart.reduce((sum, item) => {
+        const product = appState.products.find(x => x.id === item.id);
+        return sum + (product ? product.price * item.qty : 0);
+      }, 0);
+    }
+
+    function renderAdminTable(){
       const tbody = document.getElementById("adminProductsTable");
       tbody.innerHTML = appState.products.map(product => `
         <tr draggable="true" data-sort-id="${product.id}">
@@ -1386,6 +1403,7 @@
           const id = Number(btn.dataset.editAdminProduct);
           const product = appState.products.find(p => p.id === id);
           if (!product) return;
+
           document.getElementById("productName").value = product.name;
           document.getElementById("productCategory").value = product.category;
           document.getElementById("productEdition").value = product.edition || "";
@@ -1403,32 +1421,45 @@
         btn.addEventListener("click", () => {
           const id = Number(btn.dataset.deleteAdminProduct);
           appState.products = appState.products.filter(p => p.id !== id);
-          saveStore(); renderAdminPanel(); renderProducts();
+          saveStore();
+          renderProducts();
+          renderAdminPanel();
         });
       });
     }
 
-    function enableDragAndDrop() {
+    function enableDragAndDrop(){
       const rows = document.querySelectorAll("#adminProductsTable tr");
       let draggingId = null;
+
       rows.forEach(row => {
-        row.addEventListener("dragstart", e => { draggingId = Number(e.currentTarget.dataset.sortId); });
+        row.addEventListener("dragstart", e => {
+          draggingId = Number(e.currentTarget.dataset.sortId);
+        });
+
         row.addEventListener("dragover", e => e.preventDefault());
+
         row.addEventListener("drop", e => {
           e.preventDefault();
           const targetId = Number(e.currentTarget.dataset.sortId);
           if (!draggingId || draggingId === targetId) return;
+
           const fromIndex = appState.products.findIndex(p => p.id === draggingId);
           const toIndex = appState.products.findIndex(p => p.id === targetId);
+
           if (fromIndex < 0 || toIndex < 0) return;
+
           const [moved] = appState.products.splice(fromIndex, 1);
           appState.products.splice(toIndex, 0, moved);
-          saveStore(); renderAdminPanel(); renderProducts();
+
+          saveStore();
+          renderProducts();
+          renderAdminPanel();
         });
       });
     }
 
-    function renderAdminFields() {
+    function renderAdminFields(){
       const s = appState.settings;
       document.getElementById("shopNameField").value = s.shopName || "";
       document.getElementById("shopSloganField").value = s.slogan || "";
@@ -1447,7 +1478,7 @@
       document.getElementById("videoInput").value = appState.media.heroVideo || "";
       document.getElementById("storyImageInput").value = appState.media.storyImage || "";
 
-      document.getElementById("shippingTextArea").value = (appState.shipping.options || []).join("\\n");
+      document.getElementById("shippingTextArea").value = (appState.shipping.options || []).join("\n");
       document.getElementById("shippingNoteField").value = appState.shipping.note || "";
 
       const d = appState.design;
@@ -1466,24 +1497,24 @@
       calcStorageStats();
     }
 
-    function calcStorageStats() {
+    function calcStorageStats(){
       const raw = JSON.stringify(appState);
-      const bytes = new Blob([raw]).size;
+      const size = new Blob([raw]).size;
       const productImages = appState.products.filter(p => p.image).length;
       const mediaCount = productImages + (appState.media.logo ? 1 : 0) + (appState.media.heroImage ? 1 : 0) + (appState.media.storyImage ? 1 : 0);
-      const kb = (bytes / 1024).toFixed(1);
+
       document.getElementById("backupProductsCount").value = appState.products.length;
       document.getElementById("backupImagesCount").value = mediaCount;
-      document.getElementById("backupSizeInfo").value = `${kb} KB / 5 MB`;
-      if (Number(kb) > 4500) showNotice("المساحة تقترب من الامتلاء! صدّر نسخة احتياطية.");
+      document.getElementById("backupSizeInfo").value = `${(size / 1024).toFixed(1)} KB / 5 MB`;
     }
 
-    function renderPreview() {
+    function renderPreview(){
       const s = appState.settings;
       const d = appState.design;
       const hero = appState.media.heroImage || "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80";
       const story = appState.media.storyImage || "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80";
       const heroVideo = appState.media.heroVideo || "";
+
       const preview = `
         <!doctype html>
         <html lang="ar" dir="rtl">
@@ -1502,7 +1533,7 @@
         </head>
         <body>
           <div class="hero">
-            ${heroVideo ? `<video autoplay muted loop playsinline src="${heroVideo}" />` : `<img src="${hero}" />`}
+            ${heroVideo ? `<video autoplay muted loop playsinline src="${heroVideo}"></video>` : `<img src="${hero}" />`}
             <div class="content">
               <h1>${s.heroTitle || "أصالة التراث المصري"}</h1>
               <p>${s.heroText || "قطعة من مصر، وحكاية في بيتك"}</p>
@@ -1517,15 +1548,16 @@
         </body>
         </html>
       `;
+
       document.getElementById("previewFrame").srcdoc = preview;
     }
 
-    function renderAdminPanel() {
+    function renderAdminPanel(){
       renderAdminFields();
       renderPreview();
     }
 
-    function clearProductForm() {
+    function clearProductForm(){
       document.getElementById("productName").value = "";
       document.getElementById("productCategory").value = "مجالس";
       document.getElementById("productEdition").value = "";
@@ -1539,23 +1571,7 @@
       delete document.body.dataset.editingProductId;
     }
 
-    async function ensureAdminConfig() {
-      try {
-        const existing = JSON.parse(localStorage.getItem(ADMIN_KEY) || "{}");
-        const cfg = {
-          email: existing.email || "admin@asala.com",
-          passwordHash: existing.passwordHash || await hashText("asala2026")
-        };
-        localStorage.setItem(ADMIN_KEY, JSON.stringify(cfg));
-        return cfg;
-      } catch {
-        const cfg = { email: "admin@asala.com", passwordHash: await hashText("asala2026") };
-        localStorage.setItem(ADMIN_KEY, JSON.stringify(cfg));
-        return cfg;
-      }
-    }
-
-    async function hashText(value) {
+    async function hashText(value){
       try {
         const encoder = new TextEncoder();
         const digest = await crypto.subtle.digest("SHA-256", encoder.encode(value));
@@ -1565,12 +1581,24 @@
       }
     }
 
-    async function loginAdmin() {
+    async function ensureAdminConfig(){
+      const existing = JSON.parse(localStorage.getItem(ADMIN_KEY) || "{}");
+      const cfg = {
+        email: existing.email || "admin@asala.com",
+        passwordHash: existing.passwordHash || await hashText("asala2026")
+      };
+      localStorage.setItem(ADMIN_KEY, JSON.stringify(cfg));
+      return cfg;
+    }
+
+    async function loginAdmin(){
       const entered = document.getElementById("adminPassword").value.trim();
       const cfg = await ensureAdminConfig();
       const hash = await hashText(entered);
       if (hash === cfg.passwordHash) {
-        hideAdminLogin(); openAdminPanel(); renderAdminPanel();
+        hideAdminLogin();
+        openAdminPanel();
+        renderAdminPanel();
       } else {
         alert("كلمة المرور غير صحيحة");
       }
@@ -1582,18 +1610,29 @@
     function closeAdminPanel(){ document.getElementById("adminPanel").classList.remove("show"); }
     function logout(){ closeAdminPanel(); showAdminLogin(); document.getElementById("adminPassword").value = ""; }
 
-    async function saveAdminCredentials() {
+    async function saveAdminCredentials(){
       const cfg = await ensureAdminConfig();
       const email = document.getElementById("adminEmailField").value.trim();
       const pass1 = document.getElementById("adminPasswordField").value.trim();
       const pass2 = document.getElementById("adminPasswordConfirmField").value.trim();
 
-      if (!email) { alert("اكتب البريد الإلكتروني الخاص بلوحة التحكم"); return; }
+      if (!email) {
+        alert("اكتب البريد الإلكتروني الخاص بلوحة التحكم");
+        return;
+      }
+
       if (pass1 || pass2) {
-        if (pass1 !== pass2) { alert("كلمة المرور الجديدة غير متطابقة"); return; }
-        if (pass1.length < 6) { alert("كلمة المرور يجب أن تكون 6 أحرف أو أكثر"); return; }
+        if (pass1 !== pass2) {
+          alert("كلمة المرور الجديدة غير متطابقة");
+          return;
+        }
+        if (pass1.length < 6) {
+          alert("كلمة المرور يجب أن تكون 6 أحرف أو أكثر");
+          return;
+        }
         cfg.passwordHash = await hashText(pass1);
       }
+
       cfg.email = email;
       localStorage.setItem(ADMIN_KEY, JSON.stringify(cfg));
       appState.admin = { email: cfg.email };
@@ -1603,7 +1642,7 @@
       document.getElementById("adminPasswordConfirmField").value = "";
     }
 
-    function saveSettingsAndPreview() {
+    function saveSettingsAndPreview(){
       appState.settings.shopName = document.getElementById("shopNameField").value;
       appState.settings.slogan = document.getElementById("shopSloganField").value;
       appState.settings.description = document.getElementById("shopDescriptionField").value;
@@ -1615,10 +1654,13 @@
       appState.settings.heroTitle = document.getElementById("heroTitleField").value;
       appState.settings.heroEyebrow = document.getElementById("heroEyebrowField").value;
       appState.settings.heroText = document.getElementById("heroTextField").value;
-      saveStore(); renderProducts(); renderPreview(); showNotice("تم حفظ الإعدادات بنجاح");
+      saveStore();
+      renderProducts();
+      renderPreview();
+      showNotice("تم حفظ الإعدادات بنجاح");
     }
 
-    function saveDesign() {
+    function saveDesign(){
       appState.design.primary = document.getElementById("primaryColor").value;
       appState.design.gold = document.getElementById("goldColor").value;
       appState.design.paper = document.getElementById("paperColor").value;
@@ -1629,30 +1671,51 @@
       appState.design.shadowStrength = document.getElementById("shadowStrength").value || "medium";
       appState.design.headingFont = document.getElementById("headingFont").value || "Amiri";
       appState.design.bodyFont = document.getElementById("bodyFont").value || "Cairo";
-      saveStore(); applyDesign(); renderPreview(); showNotice("تم حفظ التصميم بنجاح");
+      saveStore();
+      applyDesign();
+      renderPreview();
+      showNotice("تم حفظ التصميم بنجاح");
     }
 
-    function restoreDefaultDesign() {
+    function restoreDefaultDesign(){
       appState.design = { ...defaultStore.design };
-      saveStore(); applyDesign(); renderPreview(); renderAdminPanel(); showNotice("تم استعادة الافتراضي");
+      saveStore();
+      applyDesign();
+      renderPreview();
+      renderAdminPanel();
+      showNotice("تم استعادة الافتراضي");
     }
 
-    async function uploadToImgbb(file) {
-      if (!IMGBB_API_KEY || IMGBB_API_KEY === "YOUR_IMGBB_API_KEY") {
-        alert("ضع مفتاح imgbb الحقيقي داخل المتغير IMGBB_API_KEY");
+    async function uploadToImgbb(file){
+      const API_KEY = "YOUR_IMGBB_API_KEY";
+
+      if (!API_KEY || API_KEY === "YOUR_IMGBB_API_KEY") {
+        alert("ضع مفتاح imgbb الحقيقي في المتغير API_KEY داخل السكربت");
         return null;
       }
+
       const form = new FormData();
       form.append("image", file);
-      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: "POST", body: form });
+
+      const res = await fetch(`https://api.imgbb.com/1/upload?key=${API_KEY}`, {
+        method: "POST",
+        body: form
+      });
+
       const data = await res.json();
-      if (!data.success) { alert("فشل الرفع إلى imgbb"); return null; }
+      if (!data.success) {
+        alert("فشل الرفع إلى imgbb");
+        return null;
+      }
       return data.data.url;
     }
 
-    async function uploadProductImage() {
+    async function uploadProductImage(){
       const file = document.getElementById("productImageInput").files[0];
-      if (!file) { alert("اختر صورة أولاً"); return; }
+      if (!file) {
+        alert("اختر صورة أولاً");
+        return;
+      }
       const url = await uploadToImgbb(file);
       if (url) {
         document.getElementById("productImage").value = url;
@@ -1660,40 +1723,54 @@
       }
     }
 
-    async function uploadMediaFile(inputId, outputId) {
+    async function uploadMediaFile(inputId, outputId){
       const file = document.getElementById(inputId).files[0];
-      if (!file) { alert("اختر ملف أولاً"); return; }
+      if (!file) {
+        alert("اختر ملف أولاً");
+        return;
+      }
       const url = await uploadToImgbb(file);
-      if (url) { document.getElementById(outputId).value = url; showNotice("تم رفع الملف بنجاح"); }
+      if (url) {
+        document.getElementById(outputId).value = url;
+        showNotice("تم رفع الملف بنجاح");
+      }
     }
 
-    function saveMedia() {
+    function saveMedia(){
       appState.media.logo = document.getElementById("logoInput").value.trim();
       appState.media.heroImage = document.getElementById("heroImageInput").value.trim();
       appState.media.heroVideo = document.getElementById("videoInput").value.trim();
       appState.media.storyImage = document.getElementById("storyImageInput").value.trim();
-      saveStore(); renderPreview(); showNotice("تم حفظ الوسائط بنجاح");
+      saveStore();
+      renderPreview();
+      showNotice("تم حفظ الوسائط بنجاح");
     }
 
-    function deleteVideo() {
+    function deleteVideo(){
       appState.media.heroVideo = "";
       document.getElementById("videoInput").value = "";
-      saveStore(); renderPreview(); showNotice("تم حذف الفيديو");
+      saveStore();
+      renderPreview();
+      showNotice("تم حذف الفيديو");
     }
 
-    function saveShipping() {
+    function saveShipping(){
       const raw = document.getElementById("shippingTextArea").value.trim();
       const note = document.getElementById("shippingNoteField").value.trim();
+
       appState.shipping = {
-        options: raw ? raw.split("\\n").map(s => s.trim()).filter(Boolean) : [],
+        options: raw ? raw.split("\n").map(s => s.trim()).filter(Boolean) : [],
         note: note || ""
       };
-      saveStore(); renderPreview(); showNotice("تم حفظ الشحن بنجاح");
+
+      saveStore();
+      renderPreview();
+      showNotice("تم حفظ الشحن بنجاح");
     }
 
-    function generateBackup() {
+    function generateBackup(){
       const data = JSON.stringify(appState, null, 2);
-      const blob = new Blob([data], { type: "application/json" });
+      const blob = new Blob([data], { type:"application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -1703,12 +1780,13 @@
       showNotice("تم تنزيل النسخة الاحتياطية");
     }
 
-    function restoreBackup(file) {
+    function restoreBackup(file){
       const reader = new FileReader();
       reader.onload = () => {
         try {
           const parsed = JSON.parse(reader.result);
           if (!parsed || !parsed.products) throw new Error("Invalid JSON");
+
           appState = {
             ...appState,
             ...parsed,
@@ -1723,7 +1801,12 @@
             cart: Array.isArray(parsed.cart) ? parsed.cart : appState.cart,
             filters: { ...appState.filters, ...(parsed.filters || {}) }
           };
-          saveStore(); applyDesign(); renderProducts(); renderAdminPanel(); showNotice("تم استيراد البيانات بنجاح");
+
+          saveStore();
+          applyDesign();
+          renderProducts();
+          renderAdminPanel();
+          showNotice("تم استيراد البيانات بنجاح");
         } catch {
           alert("ملف JSON غير صالح");
         }
@@ -1731,14 +1814,19 @@
       reader.readAsText(file);
     }
 
-    function resetAllData() {
+    function resetAllData(){
       if (!confirm("سيتم استبدال كل البيانات الحالية. هل أنت متأكد؟")) return;
       appState = JSON.parse(JSON.stringify(defaultStore));
-      saveStore(); applyDesign(); renderProducts(); renderAdminPanel(); showNotice("تم إعادة تعيين البيانات");
+      saveStore();
+      applyDesign();
+      renderProducts();
+      renderAdminPanel();
+      showNotice("تم إعادة تعيين البيانات");
     }
 
-    function saveProduct() {
+    function saveProduct(){
       const id = Number(document.body.dataset.editingProductId || 0);
+
       const product = {
         id: id || (appState.products.length ? Math.max(...appState.products.map(p => p.id)) + 1 : 1),
         name: document.getElementById("productName").value.trim(),
@@ -1753,8 +1841,15 @@
         image: document.getElementById("productImage").value.trim()
       };
 
-      if (!product.name || !product.description || !product.image) { alert("املأ الاسم والوصف والصورة."); return; }
-      if (product.oldPrice < product.price) { alert("السعر القديم يجب أن يكون أكبر من السعر الجديد."); return; }
+      if (!product.name || !product.description || !product.image) {
+        alert("املأ الاسم والوصف والصورة.");
+        return;
+      }
+
+      if (product.oldPrice < product.price) {
+        alert("السعر القديم يجب أن يكون أكبر من السعر الجديد.");
+        return;
+      }
 
       if (id) {
         const existing = appState.products.find(p => p.id === id);
@@ -1764,10 +1859,14 @@
         appState.products.unshift(product);
       }
 
-      saveStore(); renderProducts(); renderAdminPanel(); clearProductForm(); showNotice("تم حفظ المنتج بنجاح");
+      saveStore();
+      renderProducts();
+      renderAdminPanel();
+      clearProductForm();
+      showNotice("تم حفظ المنتج بنجاح");
     }
 
-    function bindEvents() {
+    function bindEvents(){
       document.getElementById("adminTrigger").addEventListener("click", showAdminLogin);
       document.getElementById("adminLoginBtn").addEventListener("click", loginAdmin);
       document.getElementById("logoutBtn").addEventListener("click", logout);
@@ -1791,7 +1890,7 @@
 
       document.getElementById("saveShippingBtn").addEventListener("click", saveShipping);
       document.getElementById("exportBtn").addEventListener("click", generateBackup);
-      document.getElementById("importInput").addEventListener("change", (e) => {
+      document.getElementById("importInput").addEventListener("change", e => {
         const file = e.target.files[0];
         if (file) restoreBackup(file);
       });
@@ -1812,12 +1911,16 @@
         if (e.target.id === "galleryModal") e.target.classList.remove("open");
       });
 
-      document.getElementById("searchInput").addEventListener("input", (e) => {
-        appState.filters.search = e.target.value; saveStore(); renderProducts();
+      document.getElementById("searchInput").addEventListener("input", e => {
+        appState.filters.search = e.target.value;
+        saveStore();
+        renderProducts();
       });
 
-      document.getElementById("sortSelect").addEventListener("change", (e) => {
-        appState.filters.sort = e.target.value; saveStore(); renderProducts();
+      document.getElementById("sortSelect").addEventListener("change", e => {
+        appState.filters.sort = e.target.value;
+        saveStore();
+        renderProducts();
       });
 
       document.getElementById("customOrderBtn").addEventListener("click", () => {
@@ -1825,7 +1928,7 @@
         window.open(`https://wa.me/${appState.settings.whatsapp}?text=${msg}`, "_blank");
       });
 
-      document.getElementById("orderForm").addEventListener("submit", (e) => {
+      document.getElementById("orderForm").addEventListener("submit", e => {
         e.preventDefault();
         const form = new FormData(e.target);
         const name = form.get("name");
@@ -1837,10 +1940,10 @@
         const itemsText = appState.cart.map(item => {
           const product = appState.products.find(p => p.id === item.id);
           return product ? `${product.name} × ${item.qty} — ${formatKwd(product.price * item.qty)}` : "";
-        }).filter(Boolean).join("\\n");
+        }).filter(Boolean).join("\n");
 
         const msg = encodeURIComponent(
-          `السلام عليكم، أود إتمام الطلب:\\n\\nالاسم: ${name}\\nالهاتف: ${phone}\\nوجهة التوصيل: ${destination}\\nالعنوان: ${address || "غير محدد"}\\nملاحظات: ${notes || "لا توجد"}\\n\\nالمنتجات:\\n${itemsText}\\n\\nالإجمالي: ${formatKwd(getCartTotal())}`
+          `السلام عليكم، أود إتمام الطلب:\n\nالاسم: ${name}\nالهاتف: ${phone}\nوجهة التوصيل: ${destination}\nالعنوان: ${address || "غير محدد"}\nملاحظات: ${notes || "لا توجد"}\n\nالمنتجات:\n${itemsText}\n\nالإجمالي: ${formatKwd(getCartTotal())}`
         );
 
         window.open(`https://wa.me/${appState.settings.whatsapp}?text=${msg}`, "_blank");
@@ -1858,15 +1961,17 @@
       });
     }
 
-    (async function init() {
-      const cfg = await ensureAdminConfig();
-      appState.admin = { email: cfg.email };
+    async function init(){
+      await ensureAdminConfig();
+      appState.admin = { email: "admin@asala.com" };
       applyDesign();
       renderProducts();
       renderAdminPanel();
       bindEvents();
       showAdminLogin();
-    })();
+    }
+
+    init();
   </script>
 </body>
 </html>
