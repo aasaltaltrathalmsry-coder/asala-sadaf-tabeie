@@ -3,68 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>أصالة التراث المصري | مجالس الكويت - صدف الكويت - الراي</title>
-  <meta name="description" content="أصالة التراث المصري — مجالس الكويت، صدف الكويت، الراي، أثاث فاخر بأسلوب تراثي مصري أنيق." />
+  <title>أصالة التراث المصري | متحف أنتيك مصري</title>
+  <meta name="description" content="أصالة التراث المصري — متحف أنتيك مصري، قطع فاخرة من الصدف الطبيعي والخشب الأصيل، مجالس الكويت، صدف الكويت، الراي." />
   <meta name="keywords" content="مجالس الكويت, صدف الكويت, الراي, أصالة التراث المصري, أثاث فخم, صدف طبيعي, تراث مصري, متحف أنتيك" />
-  <meta name="theme-color" content="#4a1620" />
+  <meta name="theme-color" content="#0b0908" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --primary:#4a1620;
-      --primary-2:#6d2230;
-      --gold:#c4a76b;
-      --gold-soft:#d7bf86;
-      --paper:#f6f0e9;
-      --ivory:#f7f1e3;
-      --text:#2a1f1a;
-      --shadow:0 16px 30px rgba(25,16,14,.18);
+      --museum-black:#0b0908;
+      --museum-gold:#c6a86a;
+      --museum-gold-dark:#8e6f3e;
+      --paper:#f9f5ef;
+      --stone:#eadfc8;
+      --ink:#1d1713;
+      --muted:#62544a;
+      --shadow:0 18px 36px rgba(11,9,8,.18);
       --heading-font:"Amiri","serif";
       --body-font:"Cairo","sans-serif";
       --radius:18px;
+      --card-shadow:0 18px 38px rgba(0,0,0,.12);
+      --primary: #0b0908;
+      --gold: #c6a86a;
+      --paper-bg: #f9f5ef;
+      --text: #1d1713;
+      --accent: #8e6f3e;
+      --danger: #8a1c1c;
+      --success: #1d5c35;
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
       direction:rtl;
-      background:var(--paper);
+      background:
+        linear-gradient(rgba(15,12,10,.02), rgba(15,12,10,.04)),
+        repeating-linear-gradient(
+          90deg,
+          rgba(198,168,106,.04) 0,
+          rgba(198,168,106,.04) 1px,
+          transparent 1px,
+          transparent 4px
+        ),
+        var(--paper-bg);
       color:var(--text);
       font-family:var(--body-font);
       line-height:1.8;
+      min-height:100vh;
     }
     a{text-decoration:none;color:inherit}
     img,video{display:block;max-width:100%}
     button,input,select,textarea{font:inherit}
     button{cursor:pointer}
-    .container{width:min(1200px,calc(100% - 28px));margin:0 auto}
+    .container{width:min(1210px,calc(100% - 28px));margin:0 auto}
     .section{padding:80px 0}
     .section-title{
       margin:0 0 10px;
       font-family:var(--heading-font);
-      color:var(--primary);
-      font-size:clamp(2.4rem,4vw,3.4rem);
-      line-height:1.12;
+      color:var(--museum-black);
+      font-size:clamp(2.4rem,4vw,3.5rem);
+      line-height:1.08;
+      position:relative;
+      display:inline-block;
     }
-    .section-subtitle{margin:0;color:rgba(42,35,32,.72);font-size:1.05rem}
-    .topbar{
-      background:var(--primary);
-      color:#fff;
-      text-align:center;
-      padding:10px 0;
-      font-size:.92rem;
+    .section-title::after{
+      content:"";
+      display:block;
+      width:120px;height:2px;background:linear-gradient(90deg,var(--museum-gold),transparent);
+      margin-top:8px;border-radius:99px;
+    }
+    .section-subtitle{
+      margin:0;color:rgba(29,23,19,.76);font-size:1.05rem;
+    }
+
+    .topbar-wrap{
+      position:sticky;top:0;z-index:120;
+      background:var(--museum-black);
+      color:#f4e6c9;
+      border-bottom:1px solid rgba(198,168,106,.25);
+      overflow:hidden;
+      height:42px;
+    }
+    .topbar-marquee{
+      display:flex;align-items:center;height:42px;white-space:nowrap;
+      animation: marquee 20s linear infinite;
+      width:max-content;
+      gap:40px;
+      padding-left:30px;
+      font-weight:700;
       letter-spacing:.02em;
     }
+    @keyframes marquee{
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
     .site-header{
-      position:sticky;
-      top:0;z-index:30;
-      background:rgba(246,240,233,.84);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(196,167,107,.2);
+      background:rgba(249,245,239,.86);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(198,168,106,.2);
+      position:sticky;top:42px;z-index:110;
     }
     .header-inner{
-      min-height:82px;
+      min-height:80px;
       display:flex;align-items:center;justify-content:space-between;gap:18px;
     }
     .brand{
@@ -72,80 +115,82 @@
     }
     .brand-mark{
       width:44px;height:44px;border-radius:50%;
-      background:linear-gradient(135deg,var(--gold),#f3d7a1);
-      display:grid;place-items:center;color:var(--primary);
-      font-weight:800;position:relative;overflow:hidden;
-      box-shadow:0 10px 18px rgba(196,167,107,.22);
+      background:linear-gradient(135deg,var(--museum-gold),#f2d18c);
+      display:grid;place-items:center;
+      color:var(--museum-black);
+      font-weight:900;position:relative;
+      box-shadow:0 10px 18px rgba(198,168,106,.22);
     }
     .brand-mark::before{
-      content:"";position:absolute;inset:7px;border:2px solid rgba(255,255,255,.38);border-radius:50%;
+      content:"";position:absolute;inset:7px;border:2px solid rgba(255,255,255,.45);border-radius:50%;
     }
     .brand-name{
-      font-family:var(--heading-font);
-      color:var(--primary);
-      font-size:1.9rem;line-height:1;
+      font-family:var(--heading-font);color:var(--museum-black);font-size:2rem;line-height:1;
     }
     .nav{
       display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
     }
     .nav a{
-      padding:8px 10px;border-radius:10px;color:var(--text);font-weight:600;
+      padding:8px 10px;border-radius:10px;color:var(--museum-black);font-weight:700;
       transition:.2s ease;
     }
-    .nav a:hover{background:rgba(196,167,107,.12);color:var(--primary)}
+    .nav a:hover{background:rgba(198,168,106,.12);color:var(--museum-black)}
     .header-actions{display:flex;align-items:center;gap:10px}
     .icon-btn{
-      width:42px;height:42px;border-radius:12px;border:1px solid rgba(196,167,107,.35);
-      background:rgba(196,167,107,.12);display:grid;place-items:center;color:var(--primary);font-size:1.15rem;
+      width:42px;height:42px;border-radius:12px;border:1px solid rgba(198,168,106,.38);
+      background:rgba(198,168,106,.12);display:grid;place-items:center;color:var(--museum-black);
+      font-size:1.15rem;
     }
     .primary-btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      border:none;border-radius:12px;padding:11px 18px;
-      background:var(--gold);color:var(--text);font-weight:800;box-shadow:0 12px 20px rgba(196,167,107,.18);cursor:pointer;
+      display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:12px;
+      padding:11px 18px;background:linear-gradient(135deg,var(--museum-gold),#d8b76f);color:var(--museum-black);
+      font-weight:800;box-shadow:0 12px 22px rgba(198,168,106,.18);cursor:pointer;
     }
+
     .hero{
-      position:relative;min-height:76vh;display:flex;align-items:flex-end;overflow:hidden;background:#120d0d;
+      position:relative;min-height:78vh;display:flex;align-items:flex-end;overflow:hidden;background:#0b0908;
     }
-    .hero-media{
-      position:absolute;inset:0;object-fit:cover;width:100%;height:100%;
-      filter:brightness(.38) saturate(.85);
+    .hero-museum{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.42) saturate(.8);
+      transition:transform 7s ease;
+      transform:scale(1.08);
     }
+    .hero:hover .hero-museum{transform:scale(1.14)}
     .hero-overlay{
-      position:absolute;inset:0;background:linear-gradient(90deg, rgba(18,13,13,.86), rgba(18,13,13,.48), rgba(18,13,13,.14));
+      position:absolute;inset:0;background:linear-gradient(90deg, rgba(11,9,8,.9), rgba(11,9,8,.55), rgba(11,9,8,.18));
     }
     .hero-inner{
       position:relative;z-index:1;width:min(1200px,calc(100% - 28px));margin:0 auto;
-      display:flex;align-items:flex-end;justify-content:space-between;gap:30px;padding:70px 0 72px;
+      display:flex;align-items:flex-end;justify-content:space-between;gap:30px;padding:72px 0 78px;
     }
     .hero-copy{max-width:720px;color:#fff}
     .eyebrow{
-      margin-bottom:18px;color:var(--gold-soft);font-size:1rem;letter-spacing:.05em;font-weight:700;
+      margin-bottom:18px;color:#e2c07b;font-weight:700;letter-spacing:.06em;font-size:1rem;
     }
     .hero-copy h1{
-      font-family:var(--heading-font);font-size:clamp(3rem,5vw,4.5rem);line-height:1.04;margin:0 0 16px;color:#fff;
+      margin:0 0 18px;color:#fef5df;font-family:var(--heading-font);font-size:clamp(3rem,5vw,4.5rem);line-height:1.04;
     }
     .hero-copy p{
       margin:0 0 22px;color:rgba(255,255,255,.92);font-size:1.08rem;line-height:1.9;max-width:620px;
     }
     .hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
     .social-row{
-      display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px;
     }
     .social-btn{
-      display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;
-      background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(255,255,255,.18);font-size:1.15rem;
+      width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);color:#fff;
+      font-size:1.15rem;
     }
     .hero-card{
-      min-width:300px;max-width:330px;background:rgba(255,255,255,.08);border:1px solid rgba(196,167,107,.4);
-      border-radius:18px;padding:18px 18px 20px;box-shadow:var(--shadow);backdrop-filter:blur(8px);
+      min-width:300px;max-width:335px;background:rgba(255,255,255,.07);border:1px solid rgba(198,168,106,.38);
+      border-radius:18px;padding:18px 18px 20px;backdrop-filter:blur(10px);box-shadow:var(--shadow);
     }
     .hero-card .tag{
-      display:inline-block;background:rgba(196,167,107,.15);color:var(--gold-soft);padding:8px 12px;border-radius:999px;font-size:.8rem;font-weight:700;margin-bottom:12px
+      display:inline-block;background:rgba(198,168,106,.16);color:#ebd9a6;padding:8px 12px;border-radius:999px;font-size:.8rem;font-weight:700;margin-bottom:12px;
     }
-    .hero-card h3{
-      margin:0 0 12px;font-family:var(--heading-font);font-size:2.1rem;color:#fff
-    }
-    .hero-card .mini{color:rgba(255,255,255,.88);font-size:.98rem;line-height:1.8}
+    .hero-card h3{margin:0 0 12px;color:#fff;font-family:var(--heading-font);font-size:2.1rem}
+    .hero-card .mini{color:rgba(255,255,255,.88);font-size:.97rem;line-height:1.8}
 
     .feature-strip{
       padding:22px 0 0;
@@ -154,28 +199,30 @@
       display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
     }
     .feature-box{
-      display:flex;align-items:center;gap:12px;padding:16px 12px;border-radius:12px;background:rgba(255,255,255,.24);border:1px solid rgba(196,167,107,.22);
+      display:flex;align-items:center;gap:12px;padding:16px 12px;border-radius:12px;background:rgba(255,255,255,.24);border:1px solid rgba(198,168,106,.16);
     }
     .feature-box .icon{
-      width:40px;height:40px;border-radius:12px;background:rgba(196,167,107,.14);display:grid;place-items:center;
+      width:40px;height:40px;border-radius:12px;background:rgba(198,168,106,.14);display:grid;place-items:center;
     }
-    .feature-box strong{display:block}
-    .feature-box small{color:rgba(42,35,32,.72)}
+    .feature-box strong{display:block;font-size:.97rem}
+    .feature-box small{color:rgba(29,23,19,.68)}
 
     .chip-row{
       display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 20px;
     }
     .chip{
-      background:rgba(255,255,255,.7);border:1px solid rgba(196,167,107,.42);color:var(--primary);
+      background:rgba(255,255,255,.7);border:1px solid rgba(198,168,106,.35);color:var(--museum-black);
       border-radius:999px;padding:8px 14px;font-weight:700;cursor:pointer;
     }
-    .chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+    .chip.active{
+      background:linear-gradient(135deg,var(--museum-gold),#d7b365);color:var(--museum-black);border-color:rgba(198,168,106,.9);
+    }
 
     .toolbar{
       display:flex;align-items:center;gap:12px;flex-wrap:wrap;
     }
     .toolbar input,.toolbar select{
-      min-height:46px;border:1px solid rgba(196,167,107,.35);border-radius:12px;background:rgba(255,255,255,.7);
+      min-height:46px;border:1px solid rgba(198,168,106,.35);border-radius:12px;background:rgba(255,255,255,.75);
       color:var(--text);outline:none;padding:12px 14px;
     }
     .toolbar input{min-width:260px}
@@ -185,91 +232,101 @@
       display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px;
     }
     .product-card{
-      background:rgba(255,255,255,.82);border:1px solid rgba(196,167,107,.22);border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:0 18px 28px rgba(0,0,0,.08);
-      transition:.2s ease;
+      background:rgba(255,255,255,.82);border:1px solid rgba(198,168,106,.25);border-radius:var(--radius);
+      overflow:hidden;position:relative;box-shadow:var(--card-shadow);transition:.22s ease;
     }
-    .product-card:hover{transform:translateY(-5px);border-color:rgba(196,167,107,.65)}
+    .product-card:hover{transform:translateY(-5px);border-color:rgba(198,168,106,.7)}
     .featured-badge{
-      position:absolute;top:12px;left:12px;z-index:4;background:linear-gradient(135deg,#f8d977,#d6a949);
-      color:var(--primary);border-radius:999px;padding:6px 10px;font-size:.72rem;font-weight:900;box-shadow:0 8px 18px rgba(212,183,110,.2);
+      position:absolute;top:12px;left:12px;z-index:4;background:linear-gradient(135deg,#f8d97e,#d4a64e);
+      color:var(--museum-black);border-radius:999px;padding:6px 10px;font-size:.72rem;font-weight:900;box-shadow:0 8px 18px rgba(198,168,106,.22);
     }
-    .product-image-wrap{position:relative;height:320px;overflow:hidden;background:#eae4dc}
-    .product-image-wrap img{width:100%;height:100%;object-fit:cover;cursor:pointer}
-    .product-badges{position:absolute;top:12px;right:12px;display:flex;gap:8px;flex-wrap:wrap;z-index:3}
-    .badge{
-      padding:7px 10px;border-radius:999px;font-size:.7rem;font-weight:800;line-height:1;
+    .discount-badge{
+      position:absolute;top:12px;right:12px;z-index:4;background:rgba(138,28,28,.9);color:#fff;border-radius:999px;padding:6px 10px;font-size:.72rem;font-weight:900;
     }
-    .badge.available{background:rgba(32,58,42,.92);color:#fff}
-    .badge.request{background:rgba(196,167,107,.95);color:var(--primary)}
-    .badge.edition{background:rgba(74,22,32,.9);color:#fff}
+    .product-image-wrap{position:relative;height:320px;overflow:hidden;background:#efe3d0}
+    .product-image-wrap img{
+      width:100%;height:100%;object-fit:cover;cursor:pointer;transition:transform 6s ease;
+    }
+    .product-card:hover .product-image-wrap img{transform:scale(1.08)}
     .product-body{padding:18px 16px 16px}
     .product-category{
-      display:inline-block;background:rgba(196,167,107,.12);border:1px solid rgba(196,167,107,.2);
-      color:var(--primary);border-radius:999px;padding:6px 10px;font-size:.75rem;font-weight:800;
+      display:inline-block;background:rgba(198,168,106,.12);border:1px solid rgba(198,168,106,.2);
+      color:var(--museum-black);border-radius:999px;padding:6px 10px;font-size:.75rem;font-weight:800;
     }
     .product-title{
-      margin:12px 0 8px;font-family:var(--heading-font);color:var(--primary);font-size:2rem;line-height:1.15;
+      margin:12px 0 8px;font-family:var(--heading-font);color:var(--museum-black);font-size:2rem;line-height:1.15;
     }
     .product-desc{
       min-height:52px;margin:0 0 18px;color:rgba(42,35,32,.74);font-size:.95rem;line-height:1.9;
       display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
     }
     .price-row{
-      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;border-top:1px dashed rgba(196,167,107,.6);padding-top:14px;margin-bottom:14px;
+      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;border-top:1px dashed rgba(198,168,106,.6);
+      padding-top:14px;margin-bottom:14px;
     }
-    .price-current{font-size:1.5rem;font-weight:800;color:var(--primary)}
-    .price-old{color:rgba(42,35,32,.55);font-size:.9rem;text-decoration:line-through}
+    .price-current{font-size:1.5rem;font-weight:800;color:var(--museum-black)}
+    .price-old{color:rgba(29,23,19,.55);font-size:.9rem;text-decoration:line-through}
     .product-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .cart-btn,.wa-btn{
-      flex:1;border:none;border-radius:10px;padding:11px 14px;min-height:42px;font-weight:800;cursor:pointer;
-    }
-    .cart-btn{background:var(--primary);color:#fff;min-width:120px}
-    .wa-btn{background:var(--gold);color:var(--text)}
+    .cart-btn,.wa-btn{flex:1;border:none;border-radius:10px;padding:11px 14px;min-height:42px;font-weight:800;cursor:pointer}
+    .cart-btn{background:var(--museum-black);color:#fff;min-width:120px}
+    .wa-btn{background:linear-gradient(135deg,var(--museum-gold),#e4c57c);color:var(--museum-black)}
 
-    .story-wrap{background:linear-gradient(180deg, rgba(196,167,107,.04), rgba(196,167,107,.12))}
+    .story-wrap{background:linear-gradient(180deg, rgba(198,168,106,.04), rgba(198,168,106,.12))}
     .story-grid{display:grid;grid-template-columns:1.1fr 1.2fr;gap:28px;align-items:center}
     .story-image{min-height:520px;border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
     .story-image img{width:100%;height:100%;object-fit:cover}
-    .story-copy p{margin:0 0 16px;color:rgba(42,35,32,.8);line-height:2;font-size:1rem}
-    .story-sign{margin-top:12px;font-family:var(--heading-font);font-size:2rem;color:var(--primary-2)}
+    .story-copy p{margin:0 0 16px;color:rgba(29,23,19,.8);line-height:2;font-size:1rem}
+    .story-sign{margin-top:12px;font-family:var(--heading-font);font-size:2rem;color:var(--museum-black)}
 
-    .custom-order{background:linear-gradient(135deg,var(--gold-soft), rgba(255,255,255,.26));border-top:1px dashed rgba(74,22,32,.45);border-bottom:1px dashed rgba(74,22,32,.45)}
-    .custom-card{background:rgba(255,255,255,.18);border:2px dashed rgba(74,22,32,.38);border-radius:22px;padding:32px 26px}
-    .custom-card p{margin:0 0 18px;max-width:760px;line-height:2;color:rgba(42,35,32,.82);font-size:1.04rem}
+    .custom-order{
+      background:linear-gradient(135deg, rgba(198,168,106,.20), rgba(255,255,255,.22));
+      border-top:1px dashed rgba(11,9,8,.4);border-bottom:1px dashed rgba(11,9,8,.4);
+    }
+    .custom-card{
+      background:rgba(255,255,255,.18);border:2px dashed rgba(11,9,8,.34);border-radius:22px;padding:32px 26px;
+    }
+    .custom-card p{margin:0 0 18px;max-width:760px;line-height:2;color:rgba(29,23,19,.82);font-size:1.04rem}
     .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0 26px}
     .feature-item{
       display:flex;align-items:center;gap:12px;padding:18px 16px;border-radius:16px;background:rgba(255,255,255,.2);
-      border:1px solid rgba(74,22,32,.12);font-weight:700;
+      border:1px solid rgba(11,9,8,.12);font-weight:700;
     }
     .feature-item .emoji{width:34px;text-align:center;font-size:1.8rem}
 
     .shipping-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-    .shipping-card{background:rgba(255,255,255,.72);border:1px solid rgba(196,167,107,.2);border-radius:18px;padding:22px 18px;box-shadow:var(--shadow)}
-    .shipping-card h3{margin:0 0 12px;font-family:var(--heading-font);font-size:2rem;color:var(--primary)}
-    .shipping-card p{margin:0 0 8px;color:rgba(42,35,32,.8);line-height:1.9;font-size:.98rem}
-    .guarantee{margin-top:22px;background:rgba(196,167,107,.12);border-right:4px solid var(--gold);border-radius:12px;padding:18px 20px;font-weight:700}
+    .shipping-card{
+      background:rgba(255,255,255,.72);border:1px solid rgba(198,168,106,.2);border-radius:18px;padding:22px 18px;box-shadow:var(--shadow);
+    }
+    .shipping-card h3{margin:0 0 12px;font-family:var(--heading-font);font-size:2rem;color:var(--museum-black)}
+    .shipping-card p{margin:0 0 8px;color:rgba(29,23,19,.8);line-height:1.9;font-size:.98rem}
+    .guarantee{
+      margin-top:22px;background:rgba(198,168,106,.12);border-right:4px solid var(--museum-gold);border-radius:12px;padding:18px 20px;font-weight:700;
+    }
 
     .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-    .review{background:rgba(255,255,255,.72);border:1px solid rgba(196,167,107,.2);border-radius:18px;padding:22px 18px;box-shadow:var(--shadow)}
+    .review{background:rgba(255,255,255,.72);border:1px solid rgba(198,168,106,.2);border-radius:18px;padding:22px 18px;box-shadow:var(--shadow)}
     .review-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .review-name{font-weight:800;color:var(--primary)}
-    .review-city{font-size:.8rem;color:rgba(42,35,32,.72)}
-    .stars{color:var(--gold);letter-spacing:1px}
-    .review p{margin:14px 0 0;color:rgba(42,35,32,.8);line-height:1.9;font-size:.98rem}
+    .review-name{font-weight:800;color:var(--museum-black)}
+    .review-city{font-size:.8rem;color:rgba(29,23,19,.72)}
+    .stars{color:var(--museum-gold);letter-spacing:1px}
+    .review p{margin:14px 0 0;color:rgba(29,23,19,.8);line-height:1.9;font-size:.98rem}
 
-    footer{background:var(--primary);color:#fff;padding:56px 0 20px}
+    footer{
+      background:var(--museum-black);color:#fff;padding:56px 0 20px;margin-top:20px;
+    }
     .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:28px}
-    .footer-box h4{margin:0 0 12px;font-family:var(--heading-font);font-size:2rem;color:var(--gold-soft)}
+    .footer-box h4{margin:0 0 12px;font-family:var(--heading-font);font-size:2rem;color:var(--museum-gold)}
     .footer-brand .brand{margin-bottom:12px}
     .footer-brand p{color:rgba(255,255,255,.8);line-height:1.9;margin:0}
     .footer-links{display:flex;flex-direction:column;gap:10px;color:rgba(255,255,255,.8)}
     .footer-bottom{
-      margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:rgba(255,255,255,.72);font-size:.9rem;
+      margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);
+      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:rgba(255,255,255,.72);font-size:.9rem;
     }
 
     .admin-trigger{
-      position:fixed;right:14px;bottom:14px;width:42px;height:42px;border-radius:50%;
-      background:var(--primary);color:#fff;border:none;box-shadow:0 12px 24px rgba(74,22,32,.22);
+      position:fixed;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;
+      background:var(--museum-black);color:#fff;border:none;box-shadow:0 12px 26px rgba(11,9,8,.28);
       z-index:90;display:grid;place-items:center;font-size:1.2rem;
     }
 
@@ -277,26 +334,26 @@
     .admin-overlay.show{display:block}
     .admin-modal{
       position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-      width:min(520px,calc(100% - 28px));background:rgba(248,244,239,.97);border:1px solid rgba(74,22,32,.18);
+      width:min(520px,calc(100% - 28px));background:rgba(249,245,239,.97);border:1px solid rgba(11,9,8,.14);
       border-radius:20px;box-shadow:0 28px 50px rgba(0,0,0,.18);padding:26px 26px 18px;
     }
-    .admin-title{margin:0 0 18px;text-align:center;font-family:var(--heading-font);color:var(--primary);font-size:3rem;line-height:1.2}
+    .admin-title{margin:0 0 18px;text-align:center;font-family:var(--heading-font);color:var(--museum-black);font-size:3rem;line-height:1.2}
     .admin-field{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
-    .admin-field label{color:var(--primary);font-weight:700;font-size:1.05rem}
-    .admin-field input{min-height:52px;border:1px solid rgba(74,22,32,.18);background:#fff;border-radius:12px;padding:12px 14px;outline:none}
-    .admin-submit{width:100%;min-height:52px;border:none;border-radius:12px;background:var(--primary);color:#fff;font-weight:800;font-size:1.05rem;cursor:pointer;margin-top:6px}
+    .admin-field label{color:var(--museum-black);font-weight:700;font-size:1.05rem}
+    .admin-field input{min-height:52px;border:1px solid rgba(11,9,8,.18);background:#fff;border-radius:12px;padding:12px 14px;outline:none}
+    .admin-submit{width:100%;min-height:52px;border:none;border-radius:12px;background:var(--museum-black);color:#fff;font-weight:800;font-size:1.05rem;cursor:pointer;margin-top:6px}
 
     .admin-panel{
       position:fixed;top:20px;right:20px;bottom:20px;width:min(980px,calc(100% - 28px));background:rgba(251,247,238,.98);
-      border:1px solid rgba(196,167,107,.24);border-radius:22px;box-shadow:0 30px 60px rgba(0,0,0,.14);z-index:120;display:none;overflow:hidden;
+      border:1px solid rgba(198,168,106,.24);border-radius:22px;box-shadow:0 30px 60px rgba(0,0,0,.14);z-index:120;display:none;overflow:hidden;
     }
     .admin-panel.show{display:grid;grid-template-rows:auto 1fr}
-    .admin-panel-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;background:var(--primary);color:#fff}
+    .admin-panel-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;background:var(--museum-black);color:#fff}
     .admin-panel-header h2{margin:0;font-family:var(--heading-font);font-size:2.4rem;line-height:1}
     .admin-panel-body{display:grid;grid-template-columns:230px 1fr;min-height:0}
-    .admin-tabs{background:rgba(247,241,227,.9);border-left:1px solid rgba(196,167,107,.12);padding:12px 10px;display:flex;flex-direction:column;gap:8px}
+    .admin-tabs{background:rgba(247,241,227,.9);border-left:1px solid rgba(198,168,106,.12);padding:12px 10px;display:flex;flex-direction:column;gap:8px}
     .tab-btn{border:none;background:transparent;padding:12px 12px;border-radius:12px;text-align:right;font-weight:700;color:var(--text);cursor:pointer}
-    .tab-btn.active{background:var(--primary);color:#fff}
+    .tab-btn.active{background:var(--museum-black);color:#fff}
     .admin-content{padding:18px;overflow:auto}
     .tab-pane{display:none}
     .tab-pane.active{display:block}
@@ -304,56 +361,56 @@
     .field{display:flex;flex-direction:column;gap:8px}
     .field.full{grid-column:1 / -1}
     .field input,.field select,.field textarea{
-      width:100%;min-height:48px;border:1px solid rgba(196,167,107,.36);background:rgba(255,255,255,.72);border-radius:12px;padding:12px 14px;outline:none;
+      width:100%;min-height:48px;border:1px solid rgba(198,168,106,.36);background:rgba(255,255,255,.72);border-radius:12px;padding:12px 14px;outline:none;
     }
     .field textarea{min-height:110px;resize:vertical}
     .admin-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:18px}
-    .save-btn{border:none;background:var(--primary);color:#fff;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}
-    .danger-btn{background:var(--primary-2);color:#fff;border:none;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}
-    table{width:100%;border-collapse:collapse;margin-top:12px;background:rgba(255,255,255,.72)}
-    th,td{text-align:right;border:1px solid rgba(196,167,107,.18);padding:10px 12px;font-size:.92rem;vertical-align:middle}
-    th{background:rgba(196,167,107,.08);color:var(--primary)}
-    .mini-thumb{width:52px;height:52px;object-fit:cover;border-radius:10px;border:1px solid rgba(196,167,107,.26)}
+    .save-btn{border:none;background:var(--museum-black);color:#fff;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}
+    .danger-btn{background:var(--museum-gold-dark);color:#fff;border:none;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}
+    table{width:100%;border-collapse:collapse;margin-top:12px;background:rgba(255,255,255,.7)}
+    th,td{text-align:right;border:1px solid rgba(198,168,106,.18);padding:10px 12px;font-size:.92rem;vertical-align:middle}
+    th{background:rgba(198,168,106,.08);color:var(--museum-black)}
+    .mini-thumb{width:52px;height:52px;object-fit:cover;border-radius:10px;border:1px solid rgba(198,168,106,.26)}
     .small-actions{display:flex;gap:8px;flex-wrap:wrap}
     .small-btn{border:none;border-radius:8px;padding:8px 10px;font-weight:700;cursor:pointer}
-    .edit-btn{background:rgba(196,167,107,.16);color:var(--primary)}
-    .delete-btn{background:rgba(74,22,32,.08);color:var(--primary)}
+    .edit-btn{background:rgba(198,168,106,.18);color:var(--museum-black)}
+    .delete-btn{background:rgba(138,28,28,.08);color:var(--museum-black)}
 
     .drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.28);z-index:60;display:none}
     .drawer-backdrop.open{display:block}
     .cart-drawer{
       position:fixed;top:0;bottom:0;right:0;width:min(420px,92vw);
-      background:rgba(251,247,238,.98);border-left:1px solid rgba(196,167,107,.25);
-      box-shadow:-18px 0 30px rgba(0,0,0,.16);transform:translateX(100%);transition:.28s ease;z-index:61;display:flex;flex-direction:column;
+      background:rgba(249,245,239,.98);border-left:1px solid rgba(198,168,106,.25);box-shadow:-18px 0 30px rgba(0,0,0,.14);
+      transform:translateX(100%);transition:.28s ease;z-index:61;display:flex;flex-direction:column;
     }
     .cart-drawer.open{transform:translateX(0)}
-    .drawer-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 18px 14px;border-bottom:1px solid rgba(196,167,107,.2)}
-    .drawer-title{margin:0;font-family:var(--heading-font);font-size:2rem;color:var(--primary)}
-    .close-btn{background:transparent;border:none;color:var(--primary);font-size:2rem;line-height:1;cursor:pointer}
+    .drawer-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 18px 14px;border-bottom:1px solid rgba(198,168,106,.2)}
+    .drawer-title{margin:0;font-family:var(--heading-font);font-size:2rem;color:var(--museum-black)}
+    .close-btn{background:transparent;border:none;color:var(--museum-black);font-size:2rem;line-height:1;cursor:pointer}
     .drawer-body{flex:1;overflow:auto;padding:16px 18px;display:flex;flex-direction:column;gap:14px}
-    .cart-item{display:grid;grid-template-columns:86px 1fr auto;gap:12px;align-items:center;background:#fff;border:1px solid rgba(196,167,107,.26);border-radius:14px;padding:12px}
+    .cart-item{display:grid;grid-template-columns:86px 1fr auto;gap:12px;align-items:center;background:#fff;border:1px solid rgba(198,168,106,.28);border-radius:14px;padding:12px}
     .cart-item img{width:86px;height:76px;object-fit:cover;border-radius:10px}
-    .cart-item h4{margin:0 0 5px;font-size:.96rem;color:var(--primary);line-height:1.5}
-    .cart-item small{color:rgba(42,35,32,.7)}
+    .cart-item h4{margin:0 0 5px;font-size:.96rem;color:var(--museum-black);line-height:1.5}
+    .cart-item small{color:rgba(29,23,19,.7)}
     .qty-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
     .qty-controls{display:flex;align-items:center;gap:8px}
-    .qty-controls button{width:28px;height:28px;border:none;border-radius:8px;background:rgba(196,167,107,.16);color:var(--primary);font-weight:800;cursor:pointer}
-    .cart-item .price{color:var(--primary);font-weight:800;font-size:1rem}
-    .drawer-footer{padding:18px;background:rgba(255,255,255,.72);border-top:1px solid rgba(196,167,107,.2)}
-    .summary{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;color:var(--primary);font-weight:800}
-    .total-amount{font-size:1.55rem}
-    .checkout-btn{width:100%;border:none;border-radius:12px;background:var(--primary);color:#fff;padding:15px 18px;font-weight:800;cursor:pointer}
+    .qty-controls button{width:28px;height:28px;border:none;border-radius:8px;background:rgba(198,168,106,.16);color:var(--museum-black);font-weight:800;cursor:pointer}
+    .cart-item .price{color:var(--museum-black);font-weight:800;font-size:1rem}
+    .drawer-footer{padding:18px;background:rgba(255,255,255,.72);border-top:1px solid rgba(198,168,106,.2)}
+    .summary{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;color:var(--museum-black);font-weight:800}
+    .total-amount{font-size:1.5rem}
+    .checkout-btn{width:100%;border:none;border-radius:12px;background:var(--museum-black);color:#fff;padding:15px 18px;font-weight:800;cursor:pointer}
 
     .order-modal{position:fixed;inset:0;background:rgba(0,0,0,.36);display:none;place-items:center;z-index:80}
     .order-modal.open{display:grid}
-    .order-card{width:min(720px,calc(100% - 24px));background:rgba(251,247,238,.98);border:1px solid rgba(196,167,107,.28);border-radius:22px;box-shadow:var(--shadow);padding:20px}
+    .order-card{width:min(720px,calc(100% - 24px));background:rgba(249,245,239,.98);border:1px solid rgba(198,168,106,.28);border-radius:22px;box-shadow:var(--shadow);padding:20px}
     .order-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
-    .order-head h3{margin:0;font-family:var(--heading-font);font-size:2.3rem;color:var(--primary)}
+    .order-head h3{margin:0;font-family:var(--heading-font);font-size:2.3rem;color:var(--museum-black)}
     .order-form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .field label{font-size:.82rem;color:rgba(42,35,32,.8);font-weight:800}
-    .field input,.field select,.field textarea{min-height:48px;border:1px solid rgba(196,167,107,.38);background:rgba(255,255,255,.6);border-radius:12px;padding:12px 14px;resize:vertical;outline:none;color:var(--text)}
+    .field label{font-size:.82rem;color:rgba(29,23,19,.8);font-weight:800}
+    .field input,.field select,.field textarea{min-height:48px;border:1px solid rgba(198,168,106,.38);background:rgba(255,255,255,.6);border-radius:12px;padding:12px 14px;resize:vertical;outline:none;color:var(--text)}
     .order-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:20px}
-    .secondary-action{background:rgba(196,167,107,.15);color:var(--primary);border:none;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}
+    .secondary-action{background:rgba(198,168,106,.15);color:var(--museum-black);border:none;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}
 
     .gallery-modal{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;place-items:center;z-index:95}
     .gallery-modal.open{display:grid}
@@ -362,14 +419,15 @@
     .gallery-close{position:absolute;left:12px;top:12px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.32);color:#fff;border:none;font-size:1.4rem;cursor:pointer}
 
     .notice{
-      position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:rgba(31,126,68,.95);color:#fff;padding:10px 15px;border-radius:12px;box-shadow:0 12px 22px rgba(0,0,0,.16);z-index:200;display:none;font-weight:700;min-width:220px;text-align:center;
+      position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:rgba(29,92,53,.95);color:#fff;padding:10px 15px;border-radius:12px;box-shadow:0 12px 22px rgba(0,0,0,.16);z-index:200;display:none;font-weight:700;min-width:220px;text-align:center;
     }
     .notice.show{display:block}
 
     @media (max-width:980px){
       .products-grid{grid-template-columns:repeat(2,1fr)}
+      .feature-boxes{grid-template-columns:repeat(2,1fr)}
       .story-grid{grid-template-columns:1fr}
-      .shipping-grid,.reviews-grid,.feature-grid,.footer-grid,.feature-boxes{grid-template-columns:1fr}
+      .shipping-grid,.reviews-grid,.feature-grid,.footer-grid{grid-template-columns:1fr}
     }
     @media (max-width:700px){
       .nav{display:none}
@@ -380,7 +438,7 @@
       .toolbar{width:100%}
       .toolbar input,.toolbar select{width:100%}
       .admin-panel-body{grid-template-columns:1fr}
-      .admin-tabs{flex-direction:row;overflow:auto;border-left:none;border-bottom:1px solid rgba(196,167,107,.12)}
+      .admin-tabs{flex-direction:row;overflow:auto;border-left:none;border-bottom:1px solid rgba(198,168,106,.12)}
       .admin-grid{grid-template-columns:1fr}
       .order-form-grid{grid-template-columns:1fr}
     }
@@ -388,7 +446,21 @@
 </head>
 <body>
 
-  <div class="topbar">توصيل من الكويت إلى الخليج والعالم — أصالة مدى الحياة ♾️</div>
+  <div class="topbar-wrap">
+    <div class="topbar-marquee">
+      <span>أصالة مدى الحياة — من صميم التراث المصري</span>
+      <span>•</span>
+      <span>مجالس الكويت • صدف الكويت • الراي</span>
+      <span>•</span>
+      <span>قطع فاخرة من التراث المصري</span>
+      <span>•</span>
+      <span>أصالة مدى الحياة — من صميم التراث المصري</span>
+      <span>•</span>
+      <span>مجالس الكويت • صدف الكويت • الراي</span>
+      <span>•</span>
+      <span>قطع فاخرة من التراث المصري</span>
+    </div>
+  </div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -412,22 +484,19 @@
   </header>
 
   <section class="hero">
-    <video class="hero-media" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80">
-      <source src="" type="video/mp4">
-    </video>
-    <img class="hero-media" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80" alt="أصالة التراث المصري" />
+    <img class="hero-museum" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80" alt="المتحف" />
     <div class="hero-overlay"></div>
     <div class="hero-inner">
       <div class="hero-copy">
-        <div class="eyebrow">تراث يُحكى… وفن يُقتنى</div>
+        <div class="eyebrow">متحف أنتيك مصري — ادخل المتحف.. واشتري القطعة</div>
         <h1>قطعة من مصر، وحكاية في بيتك</h1>
-        <p>من الصدف الطبيعي إلى دقة الخشب الأصيل، نحيك للبيت مشهدًا مصريًا فخمًا، يروي أصالة اليد المصرية، ويمنح كل زاوية حضورًا أنيقًا لا يُنسى.</p>
+        <p>من الصدف الطبيعي إلى الخشب الأصيل، نفتح أمامك قاعة متحف مصري فاخرة مليئة بالأثاث والقطع التراثية الأصيلة، كل قطعة تحمل تاريخًا، يدًا، وروحًا مصرية.</p>
         <div class="hero-actions">
           <a href="#collection" class="primary-btn">تسوّق المجموعة</a>
           <a href="#custom" class="primary-btn" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2)">اطلب قطعة بمقاسك</a>
         </div>
         <div class="social-row">
-          <a class="social-btn" href="https://www.instagram.com/asalat.al.torath.kw.eg" target="_blank" aria-label="إنستغرام">◎</a>
+          <a class="social-btn" href="https://www.instagram.com/asalat.al.torath.kw.eg" target="_blank" aria-label="انستغرام">◎</a>
           <a class="social-btn" href="https://www.facebook.com/share/1ddcccaFpo/?mibextid=wwXIfr" target="_blank" aria-label="فيسبوك">f</a>
           <a class="social-btn" href="https://wa.me/96551118069" target="_blank" aria-label="واتساب">✆</a>
           <a class="social-btn" href="https://www.tiktok.com/@user1178392961513" target="_blank" aria-label="تيك توك">♪</a>
@@ -435,9 +504,9 @@
       </div>
 
       <div class="hero-card">
-        <div class="tag">متاح الآن</div>
-        <h3>خامة أصلية</h3>
-        <div class="mini">صدف طبيعي • خشب زان • يد مصرية • أصالة مدى الحياة • مسح وتركيب مجاني</div>
+        <div class="tag">متحف مصري</div>
+        <h3>أصالة مدى الحياة</h3>
+        <div class="mini">من صميم التراث المصري • فن يدوي مصري • قطع فاخرة لكل بيت أنيق</div>
       </div>
     </div>
   </section>
@@ -445,20 +514,20 @@
   <div class="section feature-strip">
     <div class="container feature-boxes">
       <div class="feature-box">
-        <div class="icon">🤚</div>
-        <div><strong>صناعة يدوية</strong><small>100% يدوي</small></div>
+        <div class="icon">🏛️</div>
+        <div><strong>متحف أنتيك</strong><small>هوية مصرية فاخرة</small></div>
       </div>
       <div class="feature-box">
         <div class="icon">🐚</div>
-        <div><strong>صدف طبيعي</strong><small>لؤلؤي وقزحي</small></div>
+        <div><strong>صدف طبيعي</strong><small>مفردات فاخرة</small></div>
       </div>
       <div class="feature-box">
-        <div class="icon">♾️</div>
-        <div><strong>أصالة مدى الحياة</strong><small>خلود للقطع</small></div>
+        <div class="icon">🖐️</div>
+        <div><strong>صناعة يدوية</strong><small>أيدي مصرية</small></div>
       </div>
       <div class="feature-box">
         <div class="icon">🌍</div>
-        <div><strong>توصيل عالمي</strong><small>الكويت + الخليج</small></div>
+        <div><strong>توصيل عالمي</strong><small>من الكويت إلى الخليج</small></div>
       </div>
     </div>
   </div>
@@ -466,10 +535,8 @@
   <main>
     <section class="section" id="collection">
       <div class="container">
-        <div class="section-head">
-          <h2 class="section-title">تحف فاخرة</h2>
-          <p class="section-subtitle">مجالس الكويت — صدف الكويت — الراي — جمالية تركيبات الصدف والذهب الخفيف والهوية المصرية المعمارية</p>
-        </div>
+        <h2 class="section-title">متحف القطع الفاخرة</h2>
+        <p class="section-subtitle">كل غرفة داخل المتحف تحمل اسمًا مختلفًا، وكل قطعة تحمل قصة…</p>
 
         <div class="chip-row" id="chipRow"></div>
 
@@ -493,10 +560,10 @@
           <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80" alt="حكاية الصنعة" />
         </div>
         <div class="story-copy">
-          <h2 class="section-title">حكاية الصنعة… من يدٍ مصرية إلى بيتٍ فخم</h2>
-          <p>في ورشتنا، لا تُلصق الصدفة فقط، بل تُختار بعناية، وتُدخل في تصميمات بُنيت على التوازن بين الهندسة المصرية والهواء المعماري العربي. نختار كل شظية من الصدف بحذر، كل شفرة منها لها كونها وطابعها، ثم ندمجها مع الخشب المشغول، والطلاء الذهبي، ليصل المنتج إلى حالة فنية متكاملة.</p>
-          <p>كل قطعة تمر في ثلاث مراحل: اختيار الخامة، تصميم النقش، وتطعيم الصدف يدويًا على الخشب. وهكذا يتشكل كل منتج، ليس فقط كأثاث، بل كتحفة فنية تحمل هوية مصرية أصيلة وتفاصيل متحفية تحتاج إلى عين متعلمة لتفهم قيمتها.</p>
-          <div class="story-sign">أصالة التراث المصري — فن لا يطوى</div>
+          <h2 class="section-title">حكاية الصنعة… من متحف مصر إلى بيتك</h2>
+          <p>في ورشتنا، تُختار كل شظية صدفة بعناية، وتُدمج مع الخشب الأصيل في أشكال مستوحاة من العمارة والمتحف المصري، كل قطعة تروي خلفية فنية، مزيجًا بين الفنِّ الإسلامي والهوية المصرية الحقيقية. لا تبقى القطعة مجرد أثاث، بل تتحول إلى تحفة معمارية تحمل زمنًا من السحر.</p>
+          <p>كل قطعة تمر بثلاثة مراحل: تحديد الشكل، اختيار الخامة، ثم التطعيم اليدوي بالصدف، ليصل المنتج إلى مرحلة نهائية متقنة. هذا ما يميز كل قطعة عندنا، ويعطيها ذلك الإحساس المتحفي الفخم.</p>
+          <div class="story-sign">أصالة مدى الحياة — من صميم التراث المصري</div>
         </div>
       </div>
     </section>
@@ -504,8 +571,8 @@
     <section class="section custom-order" id="custom">
       <div class="container">
         <div class="custom-card">
-          <h2 class="section-title">تخيّلها أنت، ونصنعها لك.</h2>
-          <p>رغبتك هي التصميم، ومهارتنا هي التنفيذ. نعمل على قطع مخصصة حسب المساحة، الديكور، وأبعاد المجلس أو الطاولة أو الحامل. يمكنك أن تختار النمط، درجة الزخرفة، ونوع الخشب. كل قطعة تُصنع بشغف، وتصل إلى المنزل في صورة فاخرة تحمل هويتك.</p>
+          <h2 class="section-title">تخيلها أنت، ونصنعها لك.</h2>
+          <p>إذا أردت قطعة خاصة، خذ مساحة غرفتك بعينك، ونصنع لك قطعة مخصصة من الصدف والخشب حسب أبعادك، هيئتها، وطابع بيتك. تستطيع اختيار الزخرفة، أبعاد المجلس أو الطاولة أو حامل المصحف، وحتى نوع الخامة.</p>
           <div class="feature-grid">
             <div class="feature-item"><span class="emoji">📏</span><span>مقاسات خاصة</span></div>
             <div class="feature-item"><span class="emoji">💎</span><span>نقشة باختيارك</span></div>
@@ -518,7 +585,7 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">التوصيل والضمان</h2>
+        <h2 class="section-title">التوصيل والهوية</h2>
         <div class="shipping-grid">
           <div class="shipping-card">
             <h3>داخل الكويت</h3>
@@ -535,38 +602,38 @@
           <div class="shipping-card">
             <h3>شحن عالمي</h3>
             <p><strong>المدة:</strong> 10-15 يوم</p>
-            <p><strong>التغليف:</strong> خشبي ملكي</p>
-            <p>تغليف خاص للحفاظ على القطعة بشكل مثالي.</p>
+            <p><strong>التغليف:</strong> خشبي متخصص</p>
+            <p>تغليف يحافظ على القطعة في أحسن صورة.</p>
           </div>
         </div>
-        <div class="guarantee">أصالة مدى الحياة — من صميم التراث المصري، مع مسح وتركيب مجاني.</div>
+        <div class="guarantee">أصالة مدى الحياة — من صميم التراث المصري</div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">آراء العملاء</h2>
+        <h2 class="section-title">آراء عملاء الكويت</h2>
         <div class="reviews-grid">
           <div class="review">
             <div class="review-top">
               <div><div class="review-name">سارة</div><div class="review-city">الكويت</div></div>
               <div class="stars">★★★★★</div>
             </div>
-            <p>القطع وصلت بمستوى فني مميز، والخامة ممتازة جدًا، وشعرت أنني أشتري قطعة أثرية لا مجرد أثاث.</p>
+            <p>القطع وصلت بمستوى فني مميز، والخامة ممتازة جدًا، وشعرت أنني اشتريت قطعة أثرية من متحف مصري أصيل.</p>
           </div>
           <div class="review">
             <div class="review-top">
               <div><div class="review-name">عبدالله</div><div class="review-city">الرياض</div></div>
               <div class="stars">★★★★★</div>
             </div>
-            <p>التفصيل رائع، واللون والصدف طبيعيان، والتعامل كان محترفًا جدًا، والرسالة على واتساب سريعة.</p>
+            <p>التفصيل رائع جدًا، وأحببت التصميم الفخم، خاصة أن العمل يليق بحديقة المنزل أو غرفة الضيوف.</p>
           </div>
           <div class="review">
             <div class="review-top">
               <div><div class="review-name">مريم</div><div class="review-city">دبي</div></div>
               <div class="stars">★★★★★</div>
             </div>
-            <p>القطع تبدو أنيقة جدًا، خاصة في مجلسنا. أشعر أنني استثمرت في متعة بصرية مميزة تحمل روح مصر.</p>
+            <p>المتعة البصرية لهذه القطع تفوق التوقعات، ولفتتني التفاصيل المصرية في كل زاوية من القطعة.</p>
           </div>
         </div>
       </div>
@@ -581,7 +648,7 @@
             <div class="brand-mark">✦</div>
             <div class="brand-name" style="color:#fff;font-size:1.7rem">أصالة التراث المصري</div>
           </div>
-          <p style="margin-top:12px">أن نُصنع لكل بيت قصة من الفن والصدف الطبيعي، بأسلوب مصري أصيل يتجاوز الزمن.</p>
+          <p style="margin-top:12px">فن يدوي مصري يُحفظ باليد، ويستقر في البيت كحكاية من التراث المصري.</p>
           <p style="margin-top:14px">صُنع في مصر بأيدٍ مصرية</p>
         </div>
 
@@ -606,7 +673,7 @@
 
       <div class="footer-bottom">
         <span>© 2026 أصالة التراث المصري — جميع الحقوق محفوظة</span>
-        <span>أصالة مدى الحياة</span>
+        <span>أصالة مدى الحياة — من صميم التراث المصري</span>
       </div>
     </div>
   </footer>
@@ -772,7 +839,6 @@
               <input id="adminPasswordConfirmField" type="password" />
             </div>
           </div>
-
           <div class="admin-actions">
             <button class="save-btn" id="saveGeneralBtn">💾 حفظ الإعدادات</button>
             <button class="save-btn" id="saveAdminCredentialsBtn">🔐 حفظ بيانات الدخول</button>
@@ -803,6 +869,10 @@
                 <option>إكسسوارات</option>
                 <option>ديكورات</option>
               </select>
+            </div>
+            <div class="field">
+              <label>الإصدار</label>
+              <input id="productEdition" placeholder="مثال: 👑 إصدار فرعوني" />
             </div>
             <div class="field">
               <label>حالة المنتج</label>
@@ -865,23 +935,58 @@
           <div class="admin-grid">
             <div class="field">
               <label>اللون الأساسي</label>
-              <input id="primaryColor" type="color" value="#4a1620" />
+              <input id="primaryColor" type="color" value="#0b0908" />
             </div>
             <div class="field">
               <label>لون الذهب</label>
-              <input id="goldColor" type="color" value="#c4a76b" />
+              <input id="goldColor" type="color" value="#c6a86a" />
             </div>
             <div class="field">
               <label>لون الخلفية</label>
-              <input id="paperColor" type="color" value="#fbf7ee" />
+              <input id="paperColor" type="color" value="#f9f5ef" />
             </div>
             <div class="field">
               <label>لون النص</label>
-              <input id="textColor" type="color" value="#2e2220" />
+              <input id="textColor" type="color" value="#1d1713" />
+            </div>
+            <div class="field">
+              <label>حجم النص الأساسي</label>
+              <input id="baseTextSize" type="range" min="14" max="24" />
+            </div>
+            <div class="field">
+              <label>حجم العناوين</label>
+              <input id="headingSize" type="range" min="18" max="48" />
+            </div>
+            <div class="field">
+              <label>استدارة الحواف</label>
+              <input id="cardRadius" type="range" min="0" max="30" />
+            </div>
+            <div class="field">
+              <label>شدة الظلال</label>
+              <select id="shadowStrength">
+                <option value="light">خفيف</option>
+                <option value="medium">متوسط</option>
+                <option value="strong">قوي</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>خط العناوين</label>
+              <select id="headingFont">
+                <option value="Amiri">Amiri</option>
+                <option value="Cairo">Cairo</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>خط النصوص</label>
+              <select id="bodyFont">
+                <option value="Cairo">Cairo</option>
+                <option value="Noto Kufi Arabic">Noto Kufi Arabic</option>
+              </select>
             </div>
           </div>
           <div class="admin-actions">
             <button class="save-btn" id="saveDesignBtn">💾 حفظ التصميم</button>
+            <button class="danger-btn" id="restoreDefaultDesignBtn">↩️ استعادة الافتراضي</button>
           </div>
         </div>
 
@@ -934,7 +1039,7 @@
             </div>
             <div class="field full">
               <label>ملاحظة الشحن</label>
-              <textarea id="shippingNoteField" rows="3" placeholder="أصالة مدى الحياة — توصيل داخل الكويت حسب المناطق • شحن جميع دول الخليج"></textarea>
+              <textarea id="shippingNoteField" rows="3" placeholder="أصالة مدى الحياة — من صميم التراث المصري"></textarea>
             </div>
           </div>
           <div class="admin-actions">
@@ -975,15 +1080,15 @@
             <span>معاينة مباشرة</span>
             <button class="save-btn" id="refreshPreviewBtn">🔄 تحديث المعاينة</button>
           </div>
-          <iframe id="previewFrame" style="width:100%;height:520px;border:1px solid rgba(196,167,107,.25);border-radius:18px;background:#fff;"></iframe>
+          <iframe id="previewFrame" style="width:100%;height:520px;border:1px solid rgba(198,168,106,.25);border-radius:18px;background:#fff;"></iframe>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    const STORAGE_KEY = "asala_store_v1";
-    const ADMIN_KEY = "asala_admin_v1";
+    const STORAGE_KEY = "asala_store_v2";
+    const ADMIN_KEY = "asala_admin_v2";
     const IMGBB_API_KEY = "YOUR_IMGBB_API_KEY";
 
     const defaultStore = {
@@ -995,10 +1100,10 @@
         email: "asalat.al.torath.kw.eg@gmail.com",
         instagram: "https://www.instagram.com/asalat.al.torath.kw.eg",
         facebook: "https://www.facebook.com/share/1ddcccaFpo/?mibextid=wwXIfr",
-        announcement: "🚚 توصيل من الكويت إلى الخليج والعالم — أصالة مدى الحياة",
+        announcement: "أصالة مدى الحياة — من صميم التراث المصري",
         heroTitle: "قطعة من مصر، وحكاية في بيتك",
-        heroEyebrow: "تراث يُحكى… وفن يُقتنى",
-        heroText: "حين يلتقي عبق الأصالة بفن الصدف البحري، يولد مجسم يروي حكاية فخامة، ويمنح كل بيت هوية مصريّة عميقة."
+        heroEyebrow: "متحف أنتيك مصري — ادخل المتحف.. واشتري القطعة",
+        heroText: "حين يلتقي عبق الأصالة بفن الصدف البحري، يولد مجسم يروي حكاية فخامة، ويتجسد في بيتك كتحفة من التراث المصري."
       },
       media: {
         logo: "",
@@ -1007,10 +1112,16 @@
         storyImage: "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1200&q=80"
       },
       design: {
-        primary: "#4a1620",
-        gold: "#c4a76b",
-        paper: "#f6f0e9",
-        text: "#2a1f1a"
+        primary: "#0b0908",
+        gold: "#c6a86a",
+        paper: "#f9f5ef",
+        text: "#1d1713",
+        baseTextSize: 17,
+        headingSize: 28,
+        cardRadius: 18,
+        shadowStrength: "medium",
+        headingFont: "Amiri",
+        bodyFont: "Cairo"
       },
       shipping: {
         options: [
@@ -1019,15 +1130,15 @@
           "شحن عالمي | 10.000 | شحن جوي وبحري",
           "استلام من الفرع | 0 | فوري"
         ],
-        note: "أصالة مدى الحياة — توصيل داخل الكويت حسب المناطق • شحن جميع دول الخليج"
+        note: "أصالة مدى الحياة — من صميم التراث المصري"
       },
       products: [
-        { id:1, name:"مجلس عربي فاخر", category:"مجالس", status:"متوفر", featured:true, views:121, price:14500, oldPrice:18000, description:"مجلس عربي فخم من خشب الزان مع تطعيم صدف ناعم ومنفوش.", image:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" },
-        { id:2, name:"صندوق مجوهرات فخم", category:"صناديق", status:"متوفر", featured:false, views:80, price:450, oldPrice:680, description:"صندوق مجوهرات بالصدف الطبيعي والديكور المصنوع يدويًا.", image:"https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=900&q=80" },
-        { id:3, name:"حامل مصحف التراث العربي", category:"حوامل مصحف", status:"متوفر", featured:false, views:64, price:2800, oldPrice:3600, description:"حامل مصحف فاخر مزين بالصدف الطبيعي وكلاسيكيات التزيين المصري.", image:"https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80" },
-        { id:4, name:"طاولة زهر رمسيس", category:"طاولات", status:"بالطلب", featured:true, views:97, price:85000, oldPrice:110000, description:"طاولة زهر فاخرة بتصميم فرعوني أنيق ومناسبة للبيوت الفاخرة.", image:"https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" },
-        { id:5, name:"كرسي محمد علي باشا", category:"كراسي", status:"متوفر", featured:false, views:72, price:55000, oldPrice:75000, description:"كرسي فاخر أنيق بإطار خشب زان ومزخرف بالصدف الطبيعي.", image:"https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=900&q=80" },
-        { id:6, name:"طقم مكتب الملك فاروق", category:"أثاث مكتبي", status:"متوفر", featured:false, views:58, price:15000, oldPrice:20000, description:"طقم مكتبي فاخر بتصميم تراثي يليق بالبيوت ذات الطابع الكلاسيكي.", image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" }
+        { id:1, name:"مجلس عربي فاخر", category:"مجالس", edition:"👑 إصدار فرعوني", status:"متوفر", featured:true, views:121, price:14500, oldPrice:18000, description:"مجلس عربي فاخر من خشب الزان مع تطعيم صدف ناعم، مناسب للغرف الضيقة والديكورات الأرستقراطية.", image:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" },
+        { id:2, name:"صندوق مجوهرات فخم", category:"صناديق", edition:"✨ إصدار فخري", status:"متوفر", featured:false, views:80, price:450, oldPrice:680, description:"صندوق مجوهرات فاخر يزين غرفة النوم أو الردهة، مزخرف بالصدف الطبيعي.", image:"https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=900&q=80" },
+        { id:3, name:"حامل مصحف التراث العربي", category:"حوامل مصحف", edition:"🕌 إصدار تراثي", status:"متوفر", featured:false, views:64, price:2800, oldPrice:3600, description:"حامل مصحف مصري بتفاصيل صدفية أنيقة، مناسب لمساحات الاستقبال والديكور المتحفي.", image:"https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80" },
+        { id:4, name:"طاولة زهر رمسيس", category:"طاولات", edition:"🏺 إصدار فرعوني", status:"بالطلب", featured:true, views:97, price:85000, oldPrice:110000, description:"طاولة زهر فاخرة بتصميم فرعوني أنيق ومناسبة للبيوت الفاخرة والمقاهي الخاصة.", image:"https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" },
+        { id:5, name:"كرسي محمد علي باشا", category:"كراسي", edition:"🏛️ إصدار كلاسيكي", status:"متوفر", featured:false, views:72, price:55000, oldPrice:75000, description:"كرسي فاخر بإطار خشب زان ومزخرف بالصدف الطبيعي، مناسب لغرف الضيوف.", image:"https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=900&q=80" },
+        { id:6, name:"طقم مكتب الملك فاروق", category:"أثاث مكتبي", edition:"👑 إصدار ملكي", status:"متوفر", featured:false, views:58, price:15000, oldPrice:20000, description:"طقم مكتبي فخم بمقاسات أنيقة، مزخرف بلمسات تراثية مصرية وصدفيات فاخرة.", image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80" }
       ],
       filters: { category: "الكل", search: "", sort: "الاسم" },
       cart: [],
@@ -1079,21 +1190,27 @@
       return num.toFixed(3) + " د.ك";
     }
 
+    function getDiscountPercent(oldPrice, newPrice) {
+      if (!oldPrice || !newPrice || Number(oldPrice) <= Number(newPrice)) return 0;
+      return Math.round(((Number(oldPrice)-Number(newPrice))/Number(oldPrice))*100);
+    }
+
     function applyDesign() {
       const d = appState.design;
-      document.documentElement.style.setProperty("--primary", d.primary || "#4a1620");
-      document.documentElement.style.setProperty("--primary-2", d.primary || "#4a1620");
-      document.documentElement.style.setProperty("--gold", d.gold || "#c4a76b");
-      document.documentElement.style.setProperty("--gold-soft", d.gold || "#c4a76b");
-      document.documentElement.style.setProperty("--paper", d.paper || "#f6f0e9");
-      document.documentElement.style.setProperty("--text", d.text || "#2a1f1a");
+      document.documentElement.style.setProperty("--primary", d.primary || "#0b0908");
+      document.documentElement.style.setProperty("--museum-black", d.primary || "#0b0908");
+      document.documentElement.style.setProperty("--gold", d.gold || "#c6a86a");
+      document.documentElement.style.setProperty("--museum-gold", d.gold || "#c6a86a");
+      document.documentElement.style.setProperty("--paper-bg", d.paper || "#f9f5ef");
+      document.documentElement.style.setProperty("--text", d.text || "#1d1713");
+      document.documentElement.style.setProperty("--body-font", d.bodyFont === "Noto Kufi Arabic" ? '"Noto Kufi Arabic","sans-serif"' : '"Cairo","sans-serif"');
+      document.documentElement.style.setProperty("--heading-font", d.headingFont === "Cairo" ? '"Cairo","sans-serif"' : '"Amiri","serif"');
+      document.documentElement.style.setProperty("--radius", (Number(d.cardRadius) || 18) + "px");
     }
 
     function getFilteredProducts() {
       let items = [...appState.products];
-      if (appState.filters.category !== "الكل") {
-        items = items.filter(p => p.category === appState.filters.category);
-      }
+      if (appState.filters.category !== "الكل") items = items.filter(p => p.category === appState.filters.category);
       if (appState.filters.search) {
         const q = appState.filters.search.toLowerCase();
         items = items.filter(p => (p.name || "").toLowerCase().includes(q) || (p.category || "").toLowerCase().includes(q) || (p.description || "").toLowerCase().includes(q));
@@ -1119,33 +1236,37 @@
 
       const items = getFilteredProducts();
       const grid = document.getElementById("productsGrid");
-      grid.innerHTML = items.map(product => `
-        <article class="product-card" data-product-id="${product.id}">
-          ${product.featured ? '<div class="featured-badge">⭐ مميز</div>' : ''}
-          <div class="product-image-wrap">
-            <img class="product-image" src="${product.image}" alt="${product.name}" data-image="${product.image}" />
-            <div class="product-badges">
-              <span class="badge ${product.status === "متوفر" ? "available" : product.status === "بالطلب" ? "request" : "edition"}">${product.status || "متوفر"}</span>
+      grid.innerHTML = items.map(product => {
+        const discount = getDiscountPercent(product.oldPrice, product.price);
+        const editionText = product.edition ? `<div style="margin-top:8px;font-size:.8rem;color:var(--museum-gold-dark);font-weight:800;">${product.edition}</div>` : "";
+        const discountBadge = discount > 0 ? `<div class="discount-badge">خصم ${discount}%</div>` : "";
+        return `
+          <article class="product-card" data-product-id="${product.id}">
+            ${product.featured ? '<div class="featured-badge">⭐ مميز</div>' : ''}
+            ${discountBadge}
+            <div class="product-image-wrap">
+              <img class="product-image" src="${product.image}" alt="${product.name}" data-image="${product.image}" />
             </div>
-          </div>
-          <div class="product-body">
-            <span class="product-category">${product.category}</span>
-            <h3 class="product-title">${product.name}</h3>
-            <p class="product-desc">${product.description}</p>
-            <div class="price-row">
-              <div>
-                <span class="price-current">${formatKwd(product.price)}</span>
-                <span class="price-old">${formatKwd(product.oldPrice || product.price)}</span>
+            <div class="product-body">
+              <span class="product-category">${product.category}</span>
+              <h3 class="product-title">${product.name}</h3>
+              ${editionText}
+              <p class="product-desc">${product.description}</p>
+              <div class="price-row">
+                <div>
+                  <span class="price-current">${formatKwd(product.price)}</span>
+                  <span class="price-old">${formatKwd(product.oldPrice || product.price)}</span>
+                </div>
+                <span style="color:rgba(42,35,32,.68);font-size:.78rem;">مشاهدات: ${product.views || 0}</span>
               </div>
-              <span style="color:rgba(42,35,32,.68);font-size:.78rem;">مشاهدات: ${product.views || 0}</span>
+              <div class="product-actions">
+                <button class="cart-btn" data-add-cart="${product.id}">أضف للسلة</button>
+                <button class="wa-btn" data-wa-product="${product.id}">اطلب واتساب</button>
+              </div>
             </div>
-            <div class="product-actions">
-              <button class="cart-btn" data-add-cart="${product.id}">أضف للسلة</button>
-              <button class="wa-btn" data-wa-product="${product.id}">احجز الآن</button>
-            </div>
-          </div>
-        </article>
-      `).join("");
+          </article>
+        `;
+      }).join("");
 
       document.querySelectorAll("[data-add-cart]").forEach(btn => {
         btn.addEventListener("click", () => addToCart(Number(btn.dataset.addCart)));
@@ -1155,7 +1276,7 @@
         btn.addEventListener("click", () => {
           const product = appState.products.find(p => p.id === Number(btn.dataset.waProduct));
           if (!product) return;
-          const msg = encodeURIComponent(`السلام عليكم 🌹، أرغب في طلب: ${product.name} — ${formatKwd(product.price)}. يرجى التواصل معي.`);
+          const msg = encodeURIComponent(`السلام عليكم 🌹، أرغب في طلب المنتج: ${product.name} — السعر: ${formatKwd(product.price)}. أود التواصل بشأن التوصيل والتفاصيل.`);
           window.open(`https://wa.me/${appState.settings.whatsapp}?text=${msg}`, "_blank");
         });
       });
@@ -1206,7 +1327,7 @@
 
       const cartItems = document.getElementById("cartItems");
       if (!items.length) {
-        cartItems.innerHTML = '<div style="background:rgba(196,167,107,.1);border:1px solid rgba(196,167,107,.2);padding:12px 14px;border-radius:12px;">السلة فارغة الآن</div>';
+        cartItems.innerHTML = '<div style="background:rgba(198,168,106,.1);border:1px solid rgba(198,168,106,.2);padding:12px 14px;border-radius:12px;">السلة فارغة الآن</div>';
       } else {
         cartItems.innerHTML = items.map(item => `
           <div class="cart-item">
@@ -1273,6 +1394,7 @@
           if (!product) return;
           document.getElementById("productName").value = product.name;
           document.getElementById("productCategory").value = product.category;
+          document.getElementById("productEdition").value = product.edition || "";
           document.getElementById("productStatus").value = product.status || "متوفر";
           document.getElementById("productFeatured").value = product.featured ? "1" : "0";
           document.getElementById("productPrice").value = product.price;
@@ -1326,7 +1448,6 @@
       document.getElementById("heroEyebrowField").value = s.heroEyebrow || "";
       document.getElementById("heroTextField").value = s.heroText || "";
       document.getElementById("adminEmailField").value = appState.admin?.email || "admin@asala.com";
-
       document.getElementById("logoInput").value = appState.media.logo || "";
       document.getElementById("heroImageInput").value = appState.media.heroImage || "";
       document.getElementById("videoInput").value = appState.media.heroVideo || "";
@@ -1334,6 +1455,18 @@
 
       document.getElementById("shippingTextArea").value = (appState.shipping.options || []).join("\\n");
       document.getElementById("shippingNoteField").value = appState.shipping.note || "";
+
+      const d = appState.design;
+      document.getElementById("primaryColor").value = d.primary || "#0b0908";
+      document.getElementById("goldColor").value = d.gold || "#c6a86a";
+      document.getElementById("paperColor").value = d.paper || "#f9f5ef";
+      document.getElementById("textColor").value = d.text || "#1d1713";
+      document.getElementById("baseTextSize").value = d.baseTextSize || 17;
+      document.getElementById("headingSize").value = d.headingSize || 28;
+      document.getElementById("cardRadius").value = d.cardRadius || 18;
+      document.getElementById("shadowStrength").value = d.shadowStrength || "medium";
+      document.getElementById("headingFont").value = d.headingFont || "Amiri";
+      document.getElementById("bodyFont").value = d.bodyFont || "Cairo";
 
       renderAdminTable();
       calcStorageStats();
@@ -1401,6 +1534,7 @@
     function clearProductForm() {
       document.getElementById("productName").value = "";
       document.getElementById("productCategory").value = "مجالس";
+      document.getElementById("productEdition").value = "";
       document.getElementById("productStatus").value = "متوفر";
       document.getElementById("productFeatured").value = "0";
       document.getElementById("productPrice").value = "";
@@ -1410,12 +1544,6 @@
       document.getElementById("productImageInput").value = "";
       delete document.body.dataset.editingProductId;
     }
-
-    function openLogin() { showAdminLogin(); document.getElementById("adminPassword").value = ""; }
-    function showAdminLogin() { document.getElementById("adminOverlay").classList.add("show"); }
-    function hideAdminLogin() { document.getElementById("adminOverlay").classList.remove("show"); }
-    function openAdminPanel() { document.getElementById("adminPanel").classList.add("show"); }
-    function closeAdminPanel() { document.getElementById("adminPanel").classList.remove("show"); }
 
     async function ensureAdminConfig() {
       try {
@@ -1448,18 +1576,17 @@
       const cfg = await ensureAdminConfig();
       const hash = await hashText(entered);
       if (hash === cfg.passwordHash) {
-        hideAdminLogin();
-        openAdminPanel();
-        renderAdminPanel();
+        hideAdminLogin(); openAdminPanel(); renderAdminPanel();
       } else {
         alert("كلمة المرور غير صحيحة");
       }
     }
 
-    function logout() {
-      closeAdminPanel();
-      openLogin();
-    }
+    function showAdminLogin(){ document.getElementById("adminOverlay").classList.add("show"); }
+    function hideAdminLogin(){ document.getElementById("adminOverlay").classList.remove("show"); }
+    function openAdminPanel(){ document.getElementById("adminPanel").classList.add("show"); }
+    function closeAdminPanel(){ document.getElementById("adminPanel").classList.remove("show"); }
+    function logout(){ closeAdminPanel(); showAdminLogin(); document.getElementById("adminPassword").value = ""; }
 
     async function saveAdminCredentials() {
       const cfg = await ensureAdminConfig();
@@ -1502,34 +1629,18 @@
       appState.design.gold = document.getElementById("goldColor").value;
       appState.design.paper = document.getElementById("paperColor").value;
       appState.design.text = document.getElementById("textColor").value;
+      appState.design.baseTextSize = Number(document.getElementById("baseTextSize").value || 17);
+      appState.design.headingSize = Number(document.getElementById("headingSize").value || 28);
+      appState.design.cardRadius = Number(document.getElementById("cardRadius").value || 18);
+      appState.design.shadowStrength = document.getElementById("shadowStrength").value || "medium";
+      appState.design.headingFont = document.getElementById("headingFont").value || "Amiri";
+      appState.design.bodyFont = document.getElementById("bodyFont").value || "Cairo";
       saveStore(); applyDesign(); renderPreview(); showNotice("تم حفظ التصميم بنجاح");
     }
 
-    async function uploadToImgbb(file) {
-      if (!IMGBB_API_KEY || IMGBB_API_KEY === "YOUR_IMGBB_API_KEY") {
-        alert("ضع مفتاح imgbb الحقيقي داخل المتغير IMGBB_API_KEY");
-        return null;
-      }
-      const form = new FormData();
-      form.append("image", file);
-      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: "POST", body: form });
-      const data = await res.json();
-      if (!data.success) { alert("فشل الرفع إلى imgbb"); return null; }
-      return data.data.url;
-    }
-
-    async function uploadProductImage() {
-      const file = document.getElementById("productImageInput").files[0];
-      if (!file) { alert("اختر صورة أولاً"); return; }
-      const url = await uploadToImgbb(file);
-      if (url) { document.getElementById("productImage").value = url; showNotice("تم رفع الصورة بنجاح"); }
-    }
-
-    async function uploadMediaFile(inputId, outputId) {
-      const file = document.getElementById(inputId).files[0];
-      if (!file) { alert("اختر ملف أولاً"); return; }
-      const url = await uploadToImgbb(file);
-      if (url) { document.getElementById(outputId).value = url; showNotice("تم رفع الملف بنجاح"); }
+    function restoreDefaultDesign() {
+      appState.design = { ...defaultStore.design };
+      saveStore(); applyDesign(); renderPreview(); renderAdminPanel(); showNotice("تم استعادة الافتراضي");
     }
 
     function saveMedia() {
@@ -1599,8 +1710,7 @@
     function resetAllData() {
       if (!confirm("سيتم استبدال كل البيانات الحالية. هل أنت متأكد؟")) return;
       appState = JSON.parse(JSON.stringify(defaultStore));
-      saveStore();
-      applyDesign(); renderProducts(); renderAdminPanel(); showNotice("تم إعادة تعيين البيانات");
+      saveStore(); applyDesign(); renderProducts(); renderAdminPanel(); showNotice("تم إعادة تعيين البيانات");
     }
 
     function saveProduct() {
@@ -1609,6 +1719,7 @@
         id: id || (appState.products.length ? Math.max(...appState.products.map(p => p.id)) + 1 : 1),
         name: document.getElementById("productName").value.trim(),
         category: document.getElementById("productCategory").value,
+        edition: document.getElementById("productEdition").value.trim(),
         status: document.getElementById("productStatus").value,
         featured: document.getElementById("productFeatured").value === "1",
         views: 0,
@@ -1629,29 +1740,37 @@
         appState.products.unshift(product);
       }
 
-      saveStore();
-      renderProducts();
-      renderAdminPanel();
-      clearProductForm();
-      showNotice("تم حفظ المنتج بنجاح");
+      saveStore(); renderProducts(); renderAdminPanel(); clearProductForm(); showNotice("تم حفظ المنتج بنجاح");
     }
 
-    function updateHeroMedia() {
-      const heroImage = document.querySelector(".hero .hero-media[src]");
-      if (appState.media.heroVideo) {
-        const videoEl = document.querySelector(".hero video");
-        const imgEl = document.querySelector(".hero img.hero-media");
-        if (videoEl) { videoEl.src = appState.media.heroVideo; videoEl.style.display = "block"; }
-        if (imgEl) imgEl.style.display = "none";
-      } else {
-        const imgEl = document.querySelector(".hero img.hero-media");
-        const videoEl = document.querySelector(".hero video");
-        if (imgEl) {
-          imgEl.src = appState.media.heroImage || "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80";
-          imgEl.style.display = "block";
-        }
-        if (videoEl) videoEl.style.display = "none";
+    async function uploadToImgbb(file) {
+      if (!IMGBB_API_KEY || IMGBB_API_KEY === "YOUR_IMGBB_API_KEY") {
+        alert("ضع مفتاح imgbb الحقيقي داخل المتغير IMGBB_API_KEY");
+        return null;
       }
+      const form = new FormData();
+      form.append("image", file);
+      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: "POST", body: form });
+      const data = await res.json();
+      if (!data.success) { alert("فشل الرفع إلى imgbb"); return null; }
+      return data.data.url;
+    }
+
+    async function uploadProductImage() {
+      const file = document.getElementById("productImageInput").files[0];
+      if (!file) { alert("اختر صورة أولاً"); return; }
+      const url = await uploadToImgbb(file);
+      if (url) {
+        document.getElementById("productImage").value = url;
+        showNotice("تم رفع الصورة بنجاح");
+      }
+    }
+
+    async function uploadMediaFile(inputId, outputId) {
+      const file = document.getElementById(inputId).files[0];
+      if (!file) { alert("اختر ملف أولاً"); return; }
+      const url = await uploadToImgbb(file);
+      if (url) { document.getElementById(outputId).value = url; showNotice("تم رفع الملف بنجاح"); }
     }
 
     function bindEvents() {
@@ -1667,6 +1786,7 @@
       document.getElementById("uploadProductImageBtn").addEventListener("click", uploadProductImage);
 
       document.getElementById("saveDesignBtn").addEventListener("click", saveDesign);
+      document.getElementById("restoreDefaultDesignBtn").addEventListener("click", restoreDefaultDesign);
 
       document.getElementById("uploadLogoBtn").addEventListener("click", () => uploadMediaFile("logoInputFile", "logoInput"));
       document.getElementById("uploadHeroImageBtn").addEventListener("click", () => uploadMediaFile("heroImageFile", "heroImageInput"));
@@ -1677,7 +1797,7 @@
 
       document.getElementById("saveShippingBtn").addEventListener("click", saveShipping);
       document.getElementById("exportBtn").addEventListener("click", generateBackup);
-      document.getElementById("importInput").addEventListener("change", (e) => {
+      document.getElementById("importInput").addEventListener("change", e => {
         const file = e.target.files[0];
         if (file) restoreBackup(file);
       });
@@ -1707,7 +1827,7 @@
       });
 
       document.getElementById("customOrderBtn").addEventListener("click", () => {
-        const msg = encodeURIComponent("السلام عليكم، أرغب في تفصيل قطعة صدف بمقاسات ونقشة خاصة. متى يمكننا البدء؟");
+        const msg = encodeURIComponent("السلام عليكم، أرغب في تفصيل قطعة فاخرة حسب الأبعاد ونمط البيت. أريد التحدث عن الطلب.");
         window.open(`https://wa.me/${appState.settings.whatsapp}?text=${msg}`, "_blank");
       });
 
@@ -1748,7 +1868,6 @@
       const cfg = await ensureAdminConfig();
       appState.admin = { email: cfg.email };
       applyDesign();
-      updateHeroMedia();
       renderProducts();
       renderAdminPanel();
       bindEvents();
