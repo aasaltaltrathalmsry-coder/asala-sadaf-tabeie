@@ -24,13 +24,6 @@
       --body-font:"Cairo","sans-serif";
       --radius:18px;
       --card-shadow:0 18px 38px rgba(0,0,0,.12);
-      --primary: #0b0908;
-      --gold: #c6a86a;
-      --paper-bg: #f9f5ef;
-      --text: #1d1713;
-      --accent: #8e6f3e;
-      --danger: #8a1c1c;
-      --success: #1d5c35;
     }
 
     *{box-sizing:border-box}
@@ -47,8 +40,8 @@
           transparent 1px,
           transparent 4px
         ),
-        var(--paper-bg);
-      color:var(--text);
+        var(--paper);
+      color:var(--ink);
       font-family:var(--body-font);
       line-height:1.8;
       min-height:100vh;
@@ -325,17 +318,16 @@
     }
 
     .admin-trigger{
-      position:fixed;right:14px;bottom:14px;width:44px;height:44px;border-radius:50%;
-      background:var(--museum-black);color:#fff;border:none;box-shadow:0 12px 26px rgba(11,9,8,.28);
-      z-index:90;display:grid;place-items:center;font-size:1.2rem;
+      width:42px;height:42px;border-radius:50%;
+      background:var(--museum-black);color:#fff;border:none;box-shadow:0 10px 18px rgba(11,9,8,.18);
+      display:grid;place-items:center;font-size:1.15rem;
     }
 
-    .admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);display:none;z-index:100}
-    .admin-overlay.show{display:block}
+    .admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.32);display:none;z-index:200;align-items:center;justify-content:center}
+    .admin-overlay.show{display:flex}
     .admin-modal{
-      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-      width:min(520px,calc(100% - 28px));background:rgba(249,245,239,.97);border:1px solid rgba(11,9,8,.14);
-      border-radius:20px;box-shadow:0 28px 50px rgba(0,0,0,.18);padding:26px 26px 18px;
+      width:min(560px,calc(100% - 24px));background:rgba(249,245,239,.98);border:1px solid rgba(11,9,8,.14);
+      border-radius:20px;box-shadow:0 28px 50px rgba(0,0,0,.18);padding:26px 26px 18px;position:relative;
     }
     .admin-title{margin:0 0 18px;text-align:center;font-family:var(--heading-font);color:var(--museum-black);font-size:3rem;line-height:1.2}
     .admin-field{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
@@ -345,7 +337,7 @@
 
     .admin-panel{
       position:fixed;top:20px;right:20px;bottom:20px;width:min(980px,calc(100% - 28px));background:rgba(251,247,238,.98);
-      border:1px solid rgba(198,168,106,.24);border-radius:22px;box-shadow:0 30px 60px rgba(0,0,0,.14);z-index:120;display:none;overflow:hidden;
+      border:1px solid rgba(198,168,106,.24);border-radius:22px;box-shadow:0 30px 60px rgba(0,0,0,.14);z-index:220;display:none;overflow:hidden;
     }
     .admin-panel.show{display:grid;grid-template-rows:auto 1fr}
     .admin-panel-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;background:var(--museum-black);color:#fff}
@@ -367,7 +359,7 @@
     .admin-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-top:18px}
     .save-btn{border:none;background:var(--museum-black);color:#fff;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}
     .danger-btn{background:var(--museum-gold-dark);color:#fff;border:none;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}
-    table{width:100%;border-collapse:collapse;margin-top:12px;background:rgba(255,255,255,.7)}
+    table{width:100%;border-collapse:collapse;margin-top:12px;background:rgba(255,255,255,.72)}
     th,td{text-align:right;border:1px solid rgba(198,168,106,.18);padding:10px 12px;font-size:.92rem;vertical-align:middle}
     th{background:rgba(198,168,106,.08);color:var(--museum-black)}
     .mini-thumb{width:52px;height:52px;object-fit:cover;border-radius:10px;border:1px solid rgba(198,168,106,.26)}
@@ -478,6 +470,7 @@
 
       <div class="header-actions">
         <button class="icon-btn" id="openCartBtn" aria-label="السلة">🛒</button>
+        <button class="admin-trigger" id="adminTrigger" aria-label="لوحة التحكم">🔒</button>
         <a class="primary-btn" href="https://wa.me/96551118069" target="_blank" rel="noopener">واتساب</a>
       </div>
     </div>
@@ -490,7 +483,7 @@
       <div class="hero-copy">
         <div class="eyebrow">متحف أنتيك مصري — ادخل المتحف.. واشتري القطعة</div>
         <h1>قطعة من مصر، وحكاية في بيتك</h1>
-        <p>من الصدف الطبيعي إلى الخشب الأصيل، نفتح أمامك قاعة متحف مصري فاخرة مليئة بالأثاث والقطع التراثية الأصيلة، كل قطعة تحمل تاريخًا، يدًا، وروحًا مصرية.</p>
+        <p>من الصدف الطبيعي إلى الخشب الأصيل، نفتح أمامك قاعة متحف مصري فاخرة مليئة بالأثاث والقطع التراثية الأصلية، كل قطعة تحمل تاريخًا، يدًا، وروحًا مصرية.</p>
         <div class="hero-actions">
           <a href="#collection" class="primary-btn">تسوّق المجموعة</a>
           <a href="#custom" class="primary-btn" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.2)">اطلب قطعة بمقاسك</a>
@@ -504,7 +497,7 @@
       </div>
 
       <div class="hero-card">
-        <div class="tag">متحف مصري</div>
+        <div class="tag">متاح الآن</div>
         <h3>أصالة مدى الحياة</h3>
         <div class="mini">من صميم التراث المصري • فن يدوي مصري • قطع فاخرة لكل بيت أنيق</div>
       </div>
@@ -677,8 +670,6 @@
       </div>
     </div>
   </footer>
-
-  <button class="admin-trigger" id="adminTrigger" aria-label="لوحة التحكم">🔒</button>
 
   <div class="admin-overlay" id="adminOverlay">
     <div class="admin-modal">
@@ -1087,8 +1078,8 @@
   </div>
 
   <script>
-    const STORAGE_KEY = "asala_store_v2";
-    const ADMIN_KEY = "asala_admin_v2";
+    const STORAGE_KEY = "asala_store_v3";
+    const ADMIN_KEY = "asala_admin_v3";
     const IMGBB_API_KEY = "YOUR_IMGBB_API_KEY";
 
     const defaultStore = {
@@ -1197,15 +1188,17 @@
 
     function applyDesign() {
       const d = appState.design;
-      document.documentElement.style.setProperty("--primary", d.primary || "#0b0908");
       document.documentElement.style.setProperty("--museum-black", d.primary || "#0b0908");
-      document.documentElement.style.setProperty("--gold", d.gold || "#c6a86a");
       document.documentElement.style.setProperty("--museum-gold", d.gold || "#c6a86a");
-      document.documentElement.style.setProperty("--paper-bg", d.paper || "#f9f5ef");
-      document.documentElement.style.setProperty("--text", d.text || "#1d1713");
+      document.documentElement.style.setProperty("--paper", d.paper || "#f9f5ef");
+      document.documentElement.style.setProperty("--ink", d.text || "#1d1713");
       document.documentElement.style.setProperty("--body-font", d.bodyFont === "Noto Kufi Arabic" ? '"Noto Kufi Arabic","sans-serif"' : '"Cairo","sans-serif"');
       document.documentElement.style.setProperty("--heading-font", d.headingFont === "Cairo" ? '"Cairo","sans-serif"' : '"Amiri","serif"');
       document.documentElement.style.setProperty("--radius", (Number(d.cardRadius) || 18) + "px");
+      document.body.style.fontSize = (Number(d.baseTextSize) || 17) + "px";
+      document.querySelectorAll(".section-title").forEach(el => {
+        el.style.fontSize = (Number(d.headingSize) || 28) + "px";
+      });
     }
 
     function getFilteredProducts() {
@@ -1301,7 +1294,8 @@
       const product = appState.products.find(p => p.id === id);
       if (!product) return;
       product.views = Number(product.views || 0) + 1;
-      saveStore(); renderProducts();
+      saveStore();
+      renderProducts();
     }
 
     function addToCart(id) {
@@ -1643,6 +1637,36 @@
       saveStore(); applyDesign(); renderPreview(); renderAdminPanel(); showNotice("تم استعادة الافتراضي");
     }
 
+    async function uploadToImgbb(file) {
+      if (!IMGBB_API_KEY || IMGBB_API_KEY === "YOUR_IMGBB_API_KEY") {
+        alert("ضع مفتاح imgbb الحقيقي داخل المتغير IMGBB_API_KEY");
+        return null;
+      }
+      const form = new FormData();
+      form.append("image", file);
+      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: "POST", body: form });
+      const data = await res.json();
+      if (!data.success) { alert("فشل الرفع إلى imgbb"); return null; }
+      return data.data.url;
+    }
+
+    async function uploadProductImage() {
+      const file = document.getElementById("productImageInput").files[0];
+      if (!file) { alert("اختر صورة أولاً"); return; }
+      const url = await uploadToImgbb(file);
+      if (url) {
+        document.getElementById("productImage").value = url;
+        showNotice("تم رفع الصورة بنجاح");
+      }
+    }
+
+    async function uploadMediaFile(inputId, outputId) {
+      const file = document.getElementById(inputId).files[0];
+      if (!file) { alert("اختر ملف أولاً"); return; }
+      const url = await uploadToImgbb(file);
+      if (url) { document.getElementById(outputId).value = url; showNotice("تم رفع الملف بنجاح"); }
+    }
+
     function saveMedia() {
       appState.media.logo = document.getElementById("logoInput").value.trim();
       appState.media.heroImage = document.getElementById("heroImageInput").value.trim();
@@ -1743,36 +1767,6 @@
       saveStore(); renderProducts(); renderAdminPanel(); clearProductForm(); showNotice("تم حفظ المنتج بنجاح");
     }
 
-    async function uploadToImgbb(file) {
-      if (!IMGBB_API_KEY || IMGBB_API_KEY === "YOUR_IMGBB_API_KEY") {
-        alert("ضع مفتاح imgbb الحقيقي داخل المتغير IMGBB_API_KEY");
-        return null;
-      }
-      const form = new FormData();
-      form.append("image", file);
-      const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: "POST", body: form });
-      const data = await res.json();
-      if (!data.success) { alert("فشل الرفع إلى imgbb"); return null; }
-      return data.data.url;
-    }
-
-    async function uploadProductImage() {
-      const file = document.getElementById("productImageInput").files[0];
-      if (!file) { alert("اختر صورة أولاً"); return; }
-      const url = await uploadToImgbb(file);
-      if (url) {
-        document.getElementById("productImage").value = url;
-        showNotice("تم رفع الصورة بنجاح");
-      }
-    }
-
-    async function uploadMediaFile(inputId, outputId) {
-      const file = document.getElementById(inputId).files[0];
-      if (!file) { alert("اختر ملف أولاً"); return; }
-      const url = await uploadToImgbb(file);
-      if (url) { document.getElementById(outputId).value = url; showNotice("تم رفع الملف بنجاح"); }
-    }
-
     function bindEvents() {
       document.getElementById("adminTrigger").addEventListener("click", showAdminLogin);
       document.getElementById("adminLoginBtn").addEventListener("click", loginAdmin);
@@ -1797,7 +1791,7 @@
 
       document.getElementById("saveShippingBtn").addEventListener("click", saveShipping);
       document.getElementById("exportBtn").addEventListener("click", generateBackup);
-      document.getElementById("importInput").addEventListener("change", e => {
+      document.getElementById("importInput").addEventListener("change", (e) => {
         const file = e.target.files[0];
         if (file) restoreBackup(file);
       });
@@ -1871,6 +1865,7 @@
       renderProducts();
       renderAdminPanel();
       bindEvents();
+      showAdminLogin();
     })();
   </script>
 </body>
