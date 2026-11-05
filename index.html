@@ -180,15 +180,17 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
   <div class="trust-item"><div class="icon">🌍</div><div><h3>من الكويت إلى العالم</h3><p>شحن آمن وتغليف خشبي ملكي</p></div></div>
 </div>
 
+<!-- تم إزالة كلمة (تظهر في الواجهة) بناءً على طلبك -->
 <div class="section-title" id="featured">
-  <h2>🌟 منتجات مختارة بعناية (تظهر في الواجهة)</h2>
+  <h2>🌟 منتجات مختارة بعناية</h2>
   <p>أبرز التحف الفنية المختارة خصيصاً لتزين واجهة متجرك.</p>
 </div>
 <div class="products-grid" id="featuredGrid"></div>
 
+<!-- القسم الجديد المحدث بناءً على طلبك -->
 <div class="section-title" id="products">
-  <h2>🏺 كافة المقتنيات والتصاميم</h2>
-  <p>تصفح جميع المنتجات مقسمة على صفحات بكل سهولة.</p>
+  <h2>🛍️ التسوق حسب الأقسام — اختر ما تبحث عنه</h2>
+  <p>اختر ما تبحث عنه وتصفح جميع المنتجات مقسمة على صفحات بكل سهولة.</p>
 </div>
 
 <div class="filter-bar">
@@ -297,8 +299,14 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
     </div>
     <div>
       <h4>تواصل معنا</h4>
-      <p>💬 واتساب: +965 51118069</p>
+      <p>💬 واتساب: <a href="https://wa.me/96551118069" target="_blank">+965 51118069</a></p>
       <p>📧 البريد: asalat.al.torath.Kw.Eg@GMAIL.COM</p>
+    </div>
+    <div>
+      <h4>تابع حكايتنا الرسمية</h4>
+      <a href="https://www.facebook.com/share/1ddcccaFpo/?mibextid=wwXIfr" target="_blank">📘 فيسبوك</a>
+      <a href="https://www.instagram.com/asalat.al.torath.kw.eg" target="_blank">📸 انستغرام</a>
+      <a href="https://www.tiktok.com/@user1178392961513" target="_blank">🎵 تيك توك</a>
     </div>
   </div>
   <div class="footer-copy">© <span id="yearSpan"></span> أصالة التراث المصري — جميع الحقوق محفوظة. عاشق ومعشوق.</div>
@@ -495,14 +503,14 @@ const defaultProducts = [
   {id:220, name:"طقم جونت زان 3 قطع", royal:"👑 إصدار ملكي", cat:"أثاث ملكي", desc:"طقم جونت زان، 3 قطع، صدف طبيعي.", story:"خشب زان أصلي.", price:"7.000 د.ك", oldPrice:"8.000 د.ك", stock:"in", featured:"no", image:""}
 ];
 
-let products = JSON.parse(localStorage.getItem('asala_products_v14')) || defaultProducts;
-let siteMedia = JSON.parse(localStorage.getItem('asala_media_v14')) || { logo: '', heroVid: '', heroImg: '' };
-let storeTexts = JSON.parse(localStorage.getItem('asala_texts_v14')) || {
+let products = JSON.parse(localStorage.getItem('asala_products_v15')) || defaultProducts;
+let siteMedia = JSON.parse(localStorage.getItem('asala_media_v15')) || { logo: '', heroVid: '', heroImg: '' };
+let storeTexts = JSON.parse(localStorage.getItem('asala_texts_v15')) || {
   name: "أصالة التراث المصري",
   slogan: "عاشق ومعشوق — فن يدوي تم تصنيعه بحب من القلب ✨ صُنع في مصر",
   topbar: "🚚 توصيل من الكويت إلى الخليج والعالم — تفصيل 15-20 يومًا — ضمان أصالة مدى الحياة"
 };
-let siteColors = JSON.parse(localStorage.getItem('asala_colors_v14')) || { wine: '#6d2230', wineDeep: '#4a1620', gold: '#c4a76b' };
+let siteColors = JSON.parse(localStorage.getItem('asala_colors_v15')) || { wine: '#6d2230', wineDeep: '#4a1620', gold: '#c4a76b' };
 
 let currentCategory = 'الكل';
 let currentSearch = '';
@@ -555,7 +563,7 @@ function renderAll() {
     </div>
   `).join('');
 
-  // 2. فلترة المنتجات لباقي الصفحات
+  // 2. فلترة المنتجات حسب الأقسام والبحث
   let filtered = products.filter(p => {
     let matchCat = currentCategory === 'الكل' || p.cat === currentCategory;
     let matchSearch = (p.name || '').toLowerCase().includes(currentSearch.toLowerCase()) || (p.desc || '').toLowerCase().includes(currentSearch.toLowerCase());
@@ -719,7 +727,7 @@ function saveProductData() {
     products.unshift(pData);
   }
 
-  localStorage.setItem('asala_products_v14', JSON.stringify(products));
+  localStorage.setItem('asala_products_v15', JSON.stringify(products));
   renderAll();
   renderAdminProductsList();
   resetForm();
@@ -743,8 +751,6 @@ function editProduct(id) {
   tempProductImg = p.image || '';
 
   document.getElementById('formTitle').textContent = "✏️ تعديل المنتج: " + p.name;
-  
-  // التمرير لأعلى النموذج تلقائياً
   const formSec = document.getElementById('formSection');
   if(formSec) formSec.scrollIntoView({ behavior: 'smooth' });
 }
@@ -781,7 +787,7 @@ function renderAdminProductsList() {
 function deleteProduct(id) {
   if(confirm('هل أنت متأكد من حذف هذا المنتج؟')) {
     products = products.filter(p => p.id !== id);
-    localStorage.setItem('asala_products_v14', JSON.stringify(products));
+    localStorage.setItem('asala_products_v15', JSON.stringify(products));
     renderAll();
     renderAdminProductsList();
   }
@@ -794,7 +800,7 @@ function uploadHeroVideo(event) {
     reader.onload = function(e) {
       siteMedia.heroVid = e.target.result;
       siteMedia.heroImg = "";
-      localStorage.setItem('asala_media_v14', JSON.stringify(siteMedia));
+      localStorage.setItem('asala_media_v15', JSON.stringify(siteMedia));
       renderAll();
       alert('🎬 تم رفع وتشغيل الفيديو للغلاف!');
     };
@@ -809,7 +815,7 @@ function uploadHeroImage(event) {
     reader.onload = function(e) {
       siteMedia.heroImg = e.target.result;
       siteMedia.heroVid = "";
-      localStorage.setItem('asala_media_v14', JSON.stringify(siteMedia));
+      localStorage.setItem('asala_media_v15', JSON.stringify(siteMedia));
       renderAll();
       alert('🖼️ تم رفع صورة الغلاف بنجاح!');
     };
@@ -820,7 +826,7 @@ function uploadHeroImage(event) {
 function clearHeroMedia() {
   siteMedia.heroVid = "";
   siteMedia.heroImg = "";
-  localStorage.setItem('asala_media_v14', JSON.stringify(siteMedia));
+  localStorage.setItem('asala_media_v15', JSON.stringify(siteMedia));
   renderAll();
 }
 
@@ -830,7 +836,7 @@ function uploadLogoFile(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
       siteMedia.logo = e.target.result;
-      localStorage.setItem('asala_media_v14', JSON.stringify(siteMedia));
+      localStorage.setItem('asala_media_v15', JSON.stringify(siteMedia));
       renderAll();
       alert('🏺 تم تحديث اللوجو الأساسي!');
     };
@@ -840,14 +846,14 @@ function uploadLogoFile(event) {
 
 function saveStoreIdentity() {
   storeTexts.name = document.getElementById('editStoreName').value;
-  localStorage.setItem('asala_texts_v14', JSON.stringify(storeTexts));
+  localStorage.setItem('asala_texts_v15', JSON.stringify(storeTexts));
   renderAll();
   alert('✅ تم حفظ الهوية بنجاح!');
 }
 
 function saveDeliverySettings() {
   storeTexts.topbar = document.getElementById('editTopbarText').value;
-  localStorage.setItem('asala_texts_v14', JSON.stringify(storeTexts));
+  localStorage.setItem('asala_texts_v15', JSON.stringify(storeTexts));
   renderAll();
   alert('✅ تم حفظ إعدادات التوصيل بنجاح!');
 }
@@ -856,7 +862,7 @@ function saveDesignColors() {
   siteColors.wine = document.getElementById('colorWine').value;
   siteColors.wineDeep = document.getElementById('colorWineDeep').value;
   siteColors.gold = document.getElementById('colorGold').value;
-  localStorage.setItem('asala_colors_v14', JSON.stringify(siteColors));
+  localStorage.setItem('asala_colors_v15', JSON.stringify(siteColors));
   renderAll();
   alert('🎨 تم حفظ وتطبيق الألوان بنجاح!');
 }
@@ -894,10 +900,10 @@ function importDataFile(event) {
         if(imported.texts) storeTexts = imported.texts;
         if(imported.colors) siteColors = imported.colors;
         if(imported.creds) adminCreds = imported.creds;
-        localStorage.setItem('asala_products_v14', JSON.stringify(products));
-        localStorage.setItem('asala_media_v14', JSON.stringify(siteMedia));
-        localStorage.setItem('asala_texts_v14', JSON.stringify(storeTexts));
-        localStorage.setItem('asala_colors_v14', JSON.stringify(siteColors));
+        localStorage.setItem('asala_products_v15', JSON.stringify(products));
+        localStorage.setItem('asala_media_v15', JSON.stringify(siteMedia));
+        localStorage.setItem('asala_texts_v15', JSON.stringify(storeTexts));
+        localStorage.setItem('asala_colors_v15', JSON.stringify(siteColors));
         localStorage.setItem('asala_admin_creds', JSON.stringify(adminCreds));
         renderAll();
         renderAdminProductsList();
