@@ -312,8 +312,8 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
   <div class="admin-box" style="max-width: 420px;">
     <div class="admin-close" onclick="closeLoginModal()">✕</div>
     <h3 style="color:var(--wine); margin-bottom: 20px; text-align:center;">👑 تسجيل دخول المشرف</h3>
-    <input type="email" id="adminEmailInput" class="form-control" placeholder="البريد الإلكتروني">
-    <input type="password" id="adminPassInput" class="form-control" placeholder="كلمة المرور">
+    <input type="email" id="adminEmailInput" class="form-control" placeholder="البريد الإلكتروني" value="admin@asala.com">
+    <input type="password" id="adminPassInput" class="form-control" placeholder="كلمة المرور" value="123456">
     <button class="btn-admin" onclick="checkAdminLogin()">دخول لوحة التحكم</button>
   </div>
 </div>
@@ -324,14 +324,14 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
     <h2 style="color:var(--wine); margin-bottom: 20px;">👑 لوحة تحكم أصالة التراث</h2>
     
     <div class="admin-tabs">
-      <button class="admin-tab-btn active" onclick="switchAdminTab(event, 'tab-prod')">1. المنتجات (<span id="tabProdBadge">0</span>)</button>
-      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-backup')">2. تصدير/استيراد الداتا (لGitHub)</button>
+      <button class="admin-tab-btn active" onclick="switchAdminTab(event, 'tab-prod')">1. المنتجات والصور (<span id="tabProdBadge">0</span>)</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-backup')">2. تصدير/استيراد الداتا (لكل العملاء)</button>
       <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-sec')">3. حساب المشرف</button>
     </div>
 
     <div id="tab-prod" class="admin-tab-content active">
       <div style="background:#faf6f0; padding:20px; border-radius:12px; margin-bottom:25px; border:1px solid var(--line);">
-        <h3 id="formTitle" style="margin-bottom:15px; color:var(--wine)">➕ إضافة / تعديل منتج</h3>
+        <h3 id="formTitle" style="margin-bottom:15px; color:var(--wine)">➕ إضافة / تعديل منتج ورفع الصورة</h3>
         <input type="hidden" id="edit-id">
         <input type="text" id="p-name" class="form-control" placeholder="اسم المنتج *">
         <select id="p-cat" class="form-control">
@@ -359,14 +359,15 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
           <option value="no">لا</option>
           <option value="yes">نعم (يثبت في الواجهة)</option>
         </select>
-        <input type="text" id="p-image" class="form-control" placeholder="رابط الصورة">
-        <label style="font-size:13px; font-weight:bold; margin-bottom:5px; display:block;">أو رفع صورة من الجهاز:</label>
-        <input type="file" id="p-file" class="form-control" accept="image/*" onchange="handleProductFile(event)">
+        
+        <label style="font-size:14px; font-weight:bold; color:var(--wine); margin-bottom:5px; display:block;">🖼️ رفع صورة المنتج مباشرة من جهازك:</label>
+        <input type="file" id="p-file" class="form-control" accept="image/*" onchange="handleProductFile(event)" style="background:#fff; border:2px dashed var(--gold);">
+        
         <select id="p-stock" class="form-control">
           <option value="in">متوفر للتفصيل والتوصيل</option>
           <option value="out">نفدت الكمية مؤقتاً</option>
         </select>
-        <button class="btn-admin" onclick="saveProductData()">💾 حفظ المنتج</button>
+        <button class="btn-admin" onclick="saveProductData()">💾 حفظ المنتج والصورة</button>
       </div>
       <div>
         <h3>المنتجات الحالية (<span id="prodCount">0</span>)</h3>
@@ -375,9 +376,10 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
     </div>
 
     <div id="tab-backup" class="admin-tab-content">
-      <h3>💾 تحديث الموقع والعملاء (GitHub Sync)</h3>
-      <p style="color:var(--muted); font-size:14px; margin-bottom:15px;">بعد أن تعدل الأسعار أو تضيف الصور، اضغط زر التصدير لتحميل ملف الداتا، ثم ضعه في مشروع جيثب ليراه جميع العملاء:</p>
+      <h3>💾 تصدير واستيراد بيانات الموقع (تحديث العملاء)</h3>
+      <p style="color:var(--muted); font-size:14px; margin-bottom:15px;">بعد تعديل الأسعار أو إضافة الصور، اضغط زر التصدير لتحميل ملف الداتا، ثم ارفعه إلى GitHub ليراه جميع العملاء فوراً:</p>
       <button class="btn-admin" style="background:#27ae60; margin-bottom:20px;" onclick="exportDataFile()">📥 تصدير ملف الداتا الكامل (JSON)</button>
+      
       <label style="font-size:13px; font-weight:bold; display:block; margin-bottom:5px;">استيراد ملف داتا جاهز:</label>
       <input type="file" class="form-control" accept=".json" onchange="importDataFile(event)">
     </div>
@@ -404,7 +406,7 @@ const defaultProducts = [
   {id:106, name:"طاولة زهر جلاكسي — صدف أسترالي وأحمر", royal:"👑 إصدار ملكي", cat:"طاولات زهر وشطرنج", desc:"طاولة زهر صدف أصلي 100%، جلد ترسة وعظم جمل.", story:"خامات فاخرة: صدف أسترالي وأحمر.", price:"520.000 د.ك", oldPrice:"624.000 د.ك", stock:"in", featured:"no", image:""}
 ];
 
-let products = JSON.parse(localStorage.getItem('asala_products_v11')) || defaultProducts;
+let products = JSON.parse(localStorage.getItem('asala_products_v13')) || defaultProducts;
 let currentCategory = 'الكل';
 let currentSearch = '';
 let currentPage = 1;
@@ -414,7 +416,6 @@ let tempProductImg = "";
 const waNumber = "96551118069";
 
 function renderAll() {
-  // 1. المنتجات المختارة في الواجهة
   const featuredGrid = document.getElementById('featuredGrid');
   const featuredProducts = products.filter(p => p.featured === 'yes');
   featuredGrid.innerHTML = featuredProducts.map(p => `
@@ -433,7 +434,6 @@ function renderAll() {
     </div>
   `).join('');
 
-  // 2. المجموعة الكاملة مع الصفحات
   let filtered = products.filter(p => {
     let matchCat = currentCategory === 'الكل' || p.cat === currentCategory;
     let matchSearch = (p.name || '').toLowerCase().includes(currentSearch.toLowerCase()) || (p.desc || '').toLowerCase().includes(currentSearch.toLowerCase());
@@ -554,7 +554,7 @@ function handleProductFile(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
       tempProductImg = e.target.result;
-      alert('✅ تم أخذ الصورة بنجاح!');
+      alert('✅ تم رفع الصورة بنجاح وربطها بالمنتج!');
     };
     reader.readAsDataURL(file);
   }
@@ -576,22 +576,25 @@ function saveProductData() {
     price: price,
     oldPrice: document.getElementById('p-old').value,
     featured: document.getElementById('p-featured').value,
-    image: tempProductImg || document.getElementById('p-image').value,
+    image: tempProductImg || document.getElementById('p-image')?.value || '',
     stock: document.getElementById('p-stock').value
   };
 
   if(editId) {
     const index = products.findIndex(p => p.id === parseInt(editId));
-    if(index !== -1) products[index] = pData;
+    if(index !== -1) {
+      if(!pData.image) pData.image = products[index].image; // الاحتفاظ بالصورة القديمة إذا لم يتم رفع صورة جديدة
+      products[index] = pData;
+    }
   } else {
     products.unshift(pData);
   }
 
-  localStorage.setItem('asala_products_v11', JSON.stringify(products));
+  localStorage.setItem('asala_products_v13', JSON.stringify(products));
   renderAll();
   renderAdminProductsList();
   resetForm();
-  alert('✅ تم حفظ المنتج بنجاح!');
+  alert('✅ تم حفظ المنتج والصورة بنجاح!');
 }
 
 function editProduct(id) {
@@ -606,7 +609,6 @@ function editProduct(id) {
   document.getElementById('p-price').value = p.price;
   document.getElementById('p-old').value = p.oldPrice || '';
   document.getElementById('p-featured').value = p.featured || 'no';
-  document.getElementById('p-image').value = p.image || '';
   document.getElementById('p-stock').value = p.stock;
   tempProductImg = p.image || '';
   document.getElementById('formTitle').textContent = "✏️ تعديل المنتج: " + p.name;
@@ -619,10 +621,10 @@ function resetForm() {
   document.getElementById('p-old').value = '';
   document.getElementById('p-desc').value = '';
   document.getElementById('p-story').value = '';
-  document.getElementById('p-image').value = '';
+  document.getElementById('p-file').value = '';
   document.getElementById('p-featured').value = 'no';
   tempProductImg = "";
-  document.getElementById('formTitle').textContent = "➕ إضافة / تعديل منتج";
+  document.getElementById('formTitle').textContent = "➕ إضافة / تعديل منتج ورفع الصورة";
 }
 
 function renderAdminProductsList() {
@@ -643,7 +645,7 @@ function renderAdminProductsList() {
 function deleteProduct(id) {
   if(confirm('هل أنت متأكد من حذف هذا المنتج؟')) {
     products = products.filter(p => p.id !== id);
-    localStorage.setItem('asala_products_v11', JSON.stringify(products));
+    localStorage.setItem('asala_products_v13', JSON.stringify(products));
     renderAll();
     renderAdminProductsList();
   }
@@ -655,9 +657,9 @@ function exportDataFile() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `asala_data_${Date.now()}.json`;
+  a.download = `asala_store_backup.json`;
   a.click();
-  alert('📥 تم تصدير ملف الداتا! ارفعه في جيثب ليراها العملاء فوراً.');
+  alert('📥 تم تصدير ملف الداتا بنجاح!');
 }
 
 function importDataFile(event) {
@@ -669,10 +671,10 @@ function importDataFile(event) {
         const imported = JSON.parse(e.target.result);
         if(imported.products) {
           products = imported.products;
-          localStorage.setItem('asala_products_v11', JSON.stringify(products));
+          localStorage.setItem('asala_products_v13', JSON.stringify(products));
           renderAll();
           renderAdminProductsList();
-          alert('✅ تم استيراد المنتجات والصور بنجاح!');
+          alert('✅ تم استيراد كافة المنتجات والصور بنجاح!');
         }
       } catch(err) {
         alert('ملف غير صالح!');
@@ -683,7 +685,7 @@ function importDataFile(event) {
 }
 
 function saveAdminCredentials() {
-  const email = document.getElementById('adminNewEmail').value;
+  const email = document.getElementById('adminNewEmail->value' || document.getElementById('adminNewEmail').value);
   const pass = document.getElementById('adminNewPass').value;
   if(email && pass) {
     adminCreds = { email, pass };
