@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>أصالة التراث المصري | ASALA EGYPTIAN HERITAGE</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
-<!-- استدعاء مكتبة Supabase للربط السحابي المباشر -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
   --wine:#6d2230;
@@ -183,7 +181,7 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 </div>
 
 <div class="section-title" id="featured">
-  <h2>🌟 منتجات مختارة بعناية</h2>
+  <h2>🌟 منتجات مختارة بعناية (تظهر في الواجهة)</h2>
   <p>أبرز التحف الفنية المختارة خصيصاً لتزين واجهة متجرك.</p>
 </div>
 <div class="products-grid" id="featuredGrid"></div>
@@ -295,7 +293,7 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
     <div>
       <h4 id="footerName">أصالة التراث المصري</h4>
       <p>عاشق ومعشوق — فن يدوي تم تصنيعه بحب من القلب ✨ صُنع في مصر.</p>
-      <span class="admin-trigger" onclick="openLoginModal()">⚙️ دخول لوحة التحكم السحابية</span>
+      <span class="admin-trigger" onclick="openLoginModal()">⚙️ دخول لوحة التحكم (الادمن)</span>
     </div>
     <div>
       <h4>تواصل معنا</h4>
@@ -313,7 +311,7 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 <div class="admin-modal" id="loginModal">
   <div class="admin-box" style="max-width: 420px;">
     <div class="admin-close" onclick="closeLoginModal()">✕</div>
-    <h3 style="color:var(--wine); margin-bottom: 20px; text-align:center;">👑 تسجيل دخول المشرف السحابي</h3>
+    <h3 style="color:var(--wine); margin-bottom: 20px; text-align:center;">👑 تسجيل دخول المشرف</h3>
     <input type="email" id="adminEmailInput" class="form-control" placeholder="البريد الإلكتروني">
     <input type="password" id="adminPassInput" class="form-control" placeholder="كلمة المرور">
     <button class="btn-admin" onclick="checkAdminLogin()">دخول لوحة التحكم</button>
@@ -323,16 +321,17 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 <div class="admin-modal" id="adminPanelModal">
   <div class="admin-box">
     <div class="admin-close" onclick="closeAdminPanel()">✕</div>
-    <h2 style="color:var(--wine); margin-bottom: 20px;">👑 لوحة تحكم السحابة - أصالة التراث</h2>
+    <h2 style="color:var(--wine); margin-bottom: 20px;">👑 لوحة تحكم أصالة التراث</h2>
     
     <div class="admin-tabs">
-      <button class="admin-tab-btn active" onclick="switchAdminTab(event, 'tab-prod')">1. إدارة المنتجات (<span id="tabProdBadge">0</span>)</button>
-      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-sec')">2. حساب المشرف</button>
+      <button class="admin-tab-btn active" onclick="switchAdminTab(event, 'tab-prod')">1. المنتجات (<span id="tabProdBadge">0</span>)</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-backup')">2. تصدير/استيراد الداتا (لGitHub)</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-sec')">3. حساب المشرف</button>
     </div>
 
     <div id="tab-prod" class="admin-tab-content active">
       <div style="background:#faf6f0; padding:20px; border-radius:12px; margin-bottom:25px; border:1px solid var(--line);">
-        <h3 id="formTitle" style="margin-bottom:15px; color:var(--wine)">➕ إضافة / تعديل منتج سحابياً</h3>
+        <h3 id="formTitle" style="margin-bottom:15px; color:var(--wine)">➕ إضافة / تعديل منتج</h3>
         <input type="hidden" id="edit-id">
         <input type="text" id="p-name" class="form-control" placeholder="اسم المنتج *">
         <select id="p-cat" class="form-control">
@@ -355,45 +354,57 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
           <input type="text" id="p-price" class="form-control" placeholder="السعر الحالي (د.ك) *">
           <input type="text" id="p-old" class="form-control" placeholder="السعر القديم (د.ك)">
         </div>
-        <label style="font-size:13px; font-weight:bold; color:var(--wine); margin-bottom:5px; display:block;">🌟 عرض في الواجهة الرئيسية:</label>
+        <label style="font-size:13px; font-weight:bold; color:var(--wine); margin-bottom:5px; display:block;">🌟 عرض في الواجهة (منتج مميز):</label>
         <select id="p-featured" class="form-control">
           <option value="no">لا</option>
           <option value="yes">نعم (يثبت في الواجهة)</option>
         </select>
-        <input type="text" id="p-image" class="form-control" placeholder="رابط الصورة أو ارفعها">
+        <input type="text" id="p-image" class="form-control" placeholder="رابط الصورة">
         <label style="font-size:13px; font-weight:bold; margin-bottom:5px; display:block;">أو رفع صورة من الجهاز:</label>
         <input type="file" id="p-file" class="form-control" accept="image/*" onchange="handleProductFile(event)">
         <select id="p-stock" class="form-control">
           <option value="in">متوفر للتفصيل والتوصيل</option>
           <option value="out">نفدت الكمية مؤقتاً</option>
         </select>
-        <button class="btn-admin" onclick="saveProductData()">💾 حفظ وإرسال للسحابة فوراً</button>
+        <button class="btn-admin" onclick="saveProductData()">💾 حفظ المنتج</button>
       </div>
       <div>
-        <h3>المنتجات في قاعدة البيانات (<span id="prodCount">0</span>)</h3>
+        <h3>المنتجات الحالية (<span id="prodCount">0</span>)</h3>
         <div id="adminProductsList"></div>
       </div>
     </div>
 
+    <div id="tab-backup" class="admin-tab-content">
+      <h3>💾 تحديث الموقع والعملاء (GitHub Sync)</h3>
+      <p style="color:var(--muted); font-size:14px; margin-bottom:15px;">بعد أن تعدل الأسعار أو تضيف الصور، اضغط زر التصدير لتحميل ملف الداتا، ثم ضعه في مشروع جيثب ليراه جميع العملاء:</p>
+      <button class="btn-admin" style="background:#27ae60; margin-bottom:20px;" onclick="exportDataFile()">📥 تصدير ملف الداتا الكامل (JSON)</button>
+      <label style="font-size:13px; font-weight:bold; display:block; margin-bottom:5px;">استيراد ملف داتا جاهز:</label>
+      <input type="file" class="form-control" accept=".json" onchange="importDataFile(event)">
+    </div>
+
     <div id="tab-sec" class="admin-tab-content">
-      <h3>🔐 بيانات حساب المشرف</h3>
-      <p style="color:var(--muted); font-size:14px; margin-bottom:15px;">الافتراضي للتجربة: <code>admin@asala.com</code> | كلمة المرور: <code>123456</code></p>
-      <input type="email" id="adminNewEmail" class="form-control" placeholder="البريد الإلكتروني الجديد">
-      <input type="password" id="adminNewPass" class="form-control" placeholder="كلمة المرور الجديدة">
-      <button class="btn-admin" onclick="alert('تم التحديث بنجاح')">🔐 تحديث البيانات</button>
+      <h3>🔐 بيانات المشرف</h3>
+      <input type="email" id="adminNewEmail" class="form-control" placeholder="البريد الإلكتروني الجديد" value="admin@asala.com">
+      <input type="password" id="adminNewPass" class="form-control" placeholder="كلمة المرور الجديدة" value="123456">
+      <button class="btn-admin" onclick="saveAdminCredentials()">🔐 تحديث بيانات المشرف</button>
     </div>
 
   </div>
 </div>
 
 <script>
-// إعدادات الربط السحابي (Supabase)
-// ضع هنا بيانات حسابك من لوحة تحكم Supabase (Settings -> API)
-const SUPABASE_URL = 'https://YOUR_SUPABASE_URL.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let adminCreds = JSON.parse(localStorage.getItem('asala_admin_creds')) || { email: 'admin@asala.com', pass: '123456' };
 
-let products = [];
+const defaultProducts = [
+  {id:101, name:"ترابيزة قلابة أرابيسك ملكي — صدف أبيض وأزرق", royal:"👑 إصدار ملكي", cat:"ترابيزات", desc:"ترابيزة قلابة مصنوعة يدويًا، مطعّمة بصدف أبيض أصلي وأزرق.", story:"حين يلتقي عبق الأصالة بفنّ الصدف البحري.", price:"154.000 د.ك", oldPrice:"185.000 د.ك", stock:"in", featured:"yes", image:""},
+  {id:102, name:"ترابيزة أربع أرجل — إصدار سلطاني", royal:"👑 إصدار سلطاني", cat:"ترابيزات", desc:"ترابيزة بأربع أرجل، صدف طبيعي وخشب زان روماني.", story:"صناعة يدوية 100%، ارتفاع 50 سم.", price:"207.000 د.ك", oldPrice:"249.000 د.ك", stock:"in", featured:"yes", image:""},
+  {id:103, name:"ترابيزة قلابة نقش أرابيسك — صدف أصلي 100%", royal:"👑 إصدار ملكي", cat:"ترابيزات", desc:"قلابة بنقش أرابيسك، صدف أبيض وأزرق أصلي وأرابيسك يدوي.", story:"خشب زان روماني، تشطيب ملكي.", price:"209.000 د.ك", oldPrice:"251.000 د.ك", stock:"in", featured:"yes", image:""},
+  {id:104, name:"طاولة جانبية دائرية — نقشة إسلامية", royal:"👑 إصدار إسلامي", cat:"ترابيزات", desc:"طاولة دائرية بتصميم إسلامي، صدف أبيض وأبالون.", story:"صناعة يدوية 100%، خامات فاخرة.", price:"500.000 د.ك", oldPrice:"600.000 د.ك", stock:"in", featured:"yes", image:""},
+  {id:105, name:"طاولة زهر كلاسيك — استيكر هندسي", royal:"👑 إصدار كلاسيكي", cat:"طاولات زهر وشطرنج", desc:"طاولة زهر بنقشة إسلامية، مقاس 52×52 سم عند الفتح.", story:"طباعة عالية الجودة.", price:"185.000 د.ك", oldPrice:"222.000 د.ك", stock:"in", featured:"no", image:""},
+  {id:106, name:"طاولة زهر جلاكسي — صدف أسترالي وأحمر", royal:"👑 إصدار ملكي", cat:"طاولات زهر وشطرنج", desc:"طاولة زهر صدف أصلي 100%، جلد ترسة وعظم جمل.", story:"خامات فاخرة: صدف أسترالي وأحمر.", price:"520.000 د.ك", oldPrice:"624.000 د.ك", stock:"in", featured:"no", image:""}
+];
+
+let products = JSON.parse(localStorage.getItem('asala_products_v11')) || defaultProducts;
 let currentCategory = 'الكل';
 let currentSearch = '';
 let currentPage = 1;
@@ -401,26 +412,9 @@ const itemsPerPage = 12;
 let activeProductForOrder = null;
 let tempProductImg = "";
 const waNumber = "96551118069";
-let adminCreds = { email: 'admin@asala.com', pass: '123456' };
-
-// جلب المنتجات من السحابة عند فتح الموقع
-async function fetchProductsFromCloud() {
-  try {
-    const { data, error } = await supabaseClient.from('products').select('*').order('id', { ascending: false });
-    if(error) throw error;
-    if(data && data.length > 0) {
-      products = data;
-    }
-    renderAll();
-    renderAdminProductsList();
-  } catch(err) {
-    console.log("جارٍ استخدام البيانات الافتراضية لحين تفعيل قاعدة البيانات:", err);
-    renderAll();
-  }
-}
 
 function renderAll() {
-  // 1. عرض المنتجات المختارة في الواجهة
+  // 1. المنتجات المختارة في الواجهة
   const featuredGrid = document.getElementById('featuredGrid');
   const featuredProducts = products.filter(p => p.featured === 'yes');
   featuredGrid.innerHTML = featuredProducts.map(p => `
@@ -439,7 +433,7 @@ function renderAll() {
     </div>
   `).join('');
 
-  // 2. فلترة وصفحات المنتجات
+  // 2. المجموعة الكاملة مع الصفحات
   let filtered = products.filter(p => {
     let matchCat = currentCategory === 'الكل' || p.cat === currentCategory;
     let matchSearch = (p.name || '').toLowerCase().includes(currentSearch.toLowerCase()) || (p.desc || '').toLowerCase().includes(currentSearch.toLowerCase());
@@ -560,14 +554,13 @@ function handleProductFile(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
       tempProductImg = e.target.result;
-      alert('✅ تم اختيار الصورة بنجاح!');
+      alert('✅ تم أخذ الصورة بنجاح!');
     };
     reader.readAsDataURL(file);
   }
 }
 
-// حفظ أو تعديل المنتج في السحابة فوراً
-async function saveProductData() {
+function saveProductData() {
   const editId = document.getElementById('edit-id').value;
   const name = document.getElementById('p-name').value;
   const price = document.getElementById('p-price').value;
@@ -587,17 +580,18 @@ async function saveProductData() {
     stock: document.getElementById('p-stock').value
   };
 
-  try {
-    // إرسال البيانات مباشرة إلى جدول products في السحابة
-    const { error } = await supabaseClient.from('products').upsert([pData]);
-    if(error) throw error;
-    
-    alert('✅ تم الحفظ السحابي بنجاح! العملاء سيرون التعديل فوراً.');
-    fetchProductsFromCloud();
-    resetForm();
-  } catch(err) {
-    alert('خطأ في الاتصال بالسحابة: ' + err.message);
+  if(editId) {
+    const index = products.findIndex(p => p.id === parseInt(editId));
+    if(index !== -1) products[index] = pData;
+  } else {
+    products.unshift(pData);
   }
+
+  localStorage.setItem('asala_products_v11', JSON.stringify(products));
+  renderAll();
+  renderAdminProductsList();
+  resetForm();
+  alert('✅ تم حفظ المنتج بنجاح!');
 }
 
 function editProduct(id) {
@@ -628,7 +622,7 @@ function resetForm() {
   document.getElementById('p-image').value = '';
   document.getElementById('p-featured').value = 'no';
   tempProductImg = "";
-  document.getElementById('formTitle').textContent = "➕ إضافة / تعديل منتج سحابياً";
+  document.getElementById('formTitle').textContent = "➕ إضافة / تعديل منتج";
 }
 
 function renderAdminProductsList() {
@@ -646,20 +640,60 @@ function renderAdminProductsList() {
   `).join('');
 }
 
-async function deleteProduct(id) {
-  if(confirm('هل أنت متأكد من حذف هذا المنتج من السحابة؟')) {
-    try {
-      const { error } = await supabaseClient.from('products').delete().eq('id', id);
-      if(error) throw error;
-      fetchProductsFromCloud();
-    } catch(err) {
-      alert('خطأ أثناء الحذف: ' + err.message);
-    }
+function deleteProduct(id) {
+  if(confirm('هل أنت متأكد من حذف هذا المنتج؟')) {
+    products = products.filter(p => p.id !== id);
+    localStorage.setItem('asala_products_v11', JSON.stringify(products));
+    renderAll();
+    renderAdminProductsList();
+  }
+}
+
+function exportDataFile() {
+  const data = { products: products };
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `asala_data_${Date.now()}.json`;
+  a.click();
+  alert('📥 تم تصدير ملف الداتا! ارفعه في جيثب ليراها العملاء فوراً.');
+}
+
+function importDataFile(event) {
+  const file = event.target.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const imported = JSON.parse(e.target.result);
+        if(imported.products) {
+          products = imported.products;
+          localStorage.setItem('asala_products_v11', JSON.stringify(products));
+          renderAll();
+          renderAdminProductsList();
+          alert('✅ تم استيراد المنتجات والصور بنجاح!');
+        }
+      } catch(err) {
+        alert('ملف غير صالح!');
+      }
+    };
+    reader.readAsText(file);
+  }
+}
+
+function saveAdminCredentials() {
+  const email = document.getElementById('adminNewEmail').value;
+  const pass = document.getElementById('adminNewPass').value;
+  if(email && pass) {
+    adminCreds = { email, pass };
+    localStorage.setItem('asala_admin_creds', JSON.stringify(adminCreds));
+    alert('🔐 تم تحديث بيانات المشرف بنجاح!');
   }
 }
 
 document.getElementById('yearSpan').textContent = new Date().getFullYear();
-document.addEventListener('DOMContentLoaded', fetchProductsFromCloud);
+document.addEventListener('DOMContentLoaded', renderAll);
 </script>
 
 </body>
