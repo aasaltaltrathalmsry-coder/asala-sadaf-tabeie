@@ -27,10 +27,7 @@ a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit;border:none}
 h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 
-/* شريط الإعلان العلوي */
-.topbar{background:var(--wine-deep);color:var(--gold-light);text-align:center;padding:12px 20px;font-size:14px;font-weight:600;letter-spacing:0.5px;border-bottom:1px solid rgba(196,167,107,0.2)}
-
-/* الهيدر الفخم */
+.topbar{background:var(--wine-deep);color:var(--gold-light);text-align:center;padding:12px 20px;font-size:14px;font-weight:600;border-bottom:1px solid rgba(196,167,107,0.2)}
 .header{position:sticky;top:0;z-index:100;background:rgba(247,241,227,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:15px 40px;display:flex;justify-content:space-between;align-items:center}
 .brand{display:flex;align-items:center;gap:15px}
 .brand-logo{width:65px;height:65px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;background:var(--ivory-soft)}
@@ -40,7 +37,6 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 .nav{display:flex;gap:25px;font-weight:700;font-size:15px;color:var(--wine)}
 .nav a:hover{color:var(--gold)}
 
-/* الغلاف العالمي (Hero) */
 .hero{position:relative;height:85vh;min-height:600px;border-radius:var(--radius);overflow:hidden;margin:25px auto;max-width:1400px;background:var(--wine-deep);display:flex;align-items:flex-end;box-shadow:var(--shadow)}
 .hero video,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85}
 .hero-overlay{position:relative;z-index:10;width:100%;padding:80px 60px;color:#fff;background:linear-gradient(0deg,rgba(20,10,8,0.9) 0%,rgba(20,10,8,0.4) 60%,transparent 100%)}
@@ -51,14 +47,12 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--wine-deep);box-shadow:0 10px 30px rgba(196,167,107,0.4)}
 .btn-gold:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(196,167,107,0.6)}
 
-/* شريط التراث والدقة */
 .trust-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));background:var(--ivory-soft);border:1px solid var(--line);border-radius:var(--radius);max-width:1400px;margin:0 auto 60px;padding:30px;gap:20px;box-shadow:var(--shadow)}
 .trust-item{display:flex;gap:15px;align-items:center}
 .trust-item .icon{font-size:38px}
 .trust-item h3{font-size:16px;margin-bottom:4px;color:var(--wine-deep)}
 .trust-item p{font-size:13px;color:var(--muted)}
 
-/* شبكة المنتجات العالمية */
 .section-title{text-align:center;margin:60px 0 30px}
 .section-title h2{font-size:40px;margin-bottom:10px}
 .section-title p{color:var(--muted);font-size:16px}
@@ -79,7 +73,18 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 .btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;display:flex;justify-content:center;align-items:center;gap:8px;padding:14px;border-radius:12px;font-weight:700;transition:0.3s}
 .btn-wa:hover{opacity:0.9;transform:translateY(-2px)}
 
-/* قسم التوصيل والشحن المتكامل */
+/* نافذة معاينة المنتج المنبثقة (Modal) */
+.product-modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:2500;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
+.product-modal.open{display:flex}
+.modal-box{background:#fff;border-radius:var(--radius);max-width:850px;width:100%;max-height:90vh;overflow-y:auto;position:relative;display:grid;grid-template-columns:1.1fr 1fr;box-shadow:0 30px 80px rgba(0,0,0,0.5)}
+@media(max-width:768px){.modal-box{grid-template-columns:1fr}}
+.modal-close{position:absolute;top:15px;left:15px;background:#333;color:#fff;width:38px;height:38px;border-radius:50%;font-size:18px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}
+.modal-img-con{background:#efe6d3;min-height:300px;display:flex;align-items:center;justify-content:center}
+.modal-img-con img{width:100%;height:100%;object-fit:cover}
+.modal-details{padding:30px;display:flex;flex-direction:column;justify-content:center}
+.modal-details h2{font-size:26px;color:var(--wine-deep);margin-bottom:10px}
+.modal-details .price{font-size:24px;font-weight:900;color:var(--wine);margin:15px 0;font-family:'Amiri',serif}
+
 .delivery-section{max-width:1400px;margin:60px auto;padding:0 24px}
 .delivery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:30px}
 .delivery-card{background:#fff;border-radius:var(--radius);padding:30px;border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -88,13 +93,11 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 .delivery-card ul li{margin-bottom:10px;padding-right:15px;position:relative}
 .delivery-card ul li::before{content:"•";color:var(--gold);position:absolute;right:0;font-weight:bold}
 
-/* قسم حكاية الصنعة والتفصيل */
 .story-section{background:var(--wine-deep);color:#fff;padding:90px 24px;margin:60px 0;text-align:center}
 .story-box{max-width:900px;margin:0 auto}
-.story-box h2{font-size:42px;color:var(--gold-light);margin-bottom:25px}
-.story-box p{font-size:18px;line-height:2.2;opacity:0.95;margin-bottom:20px}
+.story-box h2{font-size:40px;color:var(--gold-light);margin-bottom:25px}
+.story-box p{font-size:17px;line-height:2.3;opacity:0.95;margin-bottom:20px;text-align:justify}
 
-/* الفوتر */
 .footer{background:var(--wine-deep);color:#fff;padding:80px 24px 30px;border-top:1px solid rgba(196,167,107,0.3)}
 .footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;margin-bottom:50px}
 .footer h4{color:var(--gold-light);font-size:18px;margin-bottom:20px}
@@ -104,7 +107,6 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 .admin-trigger:hover{background:var(--gold);color:var(--wine-deep)}
 .footer-copy{text-align:center;border-top:1px solid rgba(255,255,255,0.1);padding-top:25px;font-size:13px;color:rgba(255,255,255,0.5)}
 
-/* لوحة التحكم السرية */
 .admin-modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
 .admin-modal.open{display:flex}
 .admin-box{background:#fff;border-radius:var(--radius);max-width:1100px;width:100%;max-height:92vh;overflow-y:auto;padding:40px;color:#222;position:relative;box-shadow:0 30px 80px rgba(0,0,0,0.5)}
@@ -118,10 +120,8 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 .btn-admin{background:var(--wine);color:#fff;padding:14px 25px;border-radius:10px;font-weight:bold;cursor:pointer;font-size:16px;width:100%}
 .btn-danger{background:#c0392b;color:#fff;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold}
 .btn-edit{background:var(--gold);color:var(--wine-deep);padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:bold;margin-left:8px}
-
 .admin-product-row{display:flex;justify-content:space-between;align-items:center;background:#faf6f0;padding:15px;border-radius:10px;margin-bottom:12px;border:1px solid #eae5de}
 
-/* زر واتساب عائم */
 .wa-float{position:fixed;bottom:30px;left:30px;width:65px;height:65px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,0.5);z-index:99;transition:0.3s}
 .wa-float:hover{transform:scale(1.1)}
 .wa-float svg{width:36px;height:36px;fill:#fff}
@@ -146,11 +146,11 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
     <a href="#delivery">الشحن والتوصيل</a>
     <a href="#story">حكاية الصنعة</a>
     <a href="#custom">تفصيل حسب الطلب</a>
-    <a href="#contact">تواصل معنا</a>
+    <a href="#contact" id="contactNav">تواصل معنا</a>
   </nav>
 </header>
 
-<!-- الغلاف الفخم (صورة أو فيديو عائم) -->
+<!-- الغلاف الفخم -->
 <section class="hero" id="heroSection">
   <div id="heroMediaContainer">
     <img src="1.jpg" alt="غلاف أصالة التراث">
@@ -179,7 +179,25 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 <!-- شبكة المنتجات -->
 <div class="products-grid" id="productsGrid"></div>
 
-<!-- قسم تفاصيل التوصيل والشحن الشامل -->
+<!-- نافذة معاينة المنتج المنبثقة -->
+<div class="product-modal" id="productModal" onclick="if(event.target === this) closeModal()">
+  <div class="modal-box">
+    <div class="modal-close" onclick="closeModal()">✕</div>
+    <div class="modal-img-con" id="modalImgContainer">
+      <div style="font-size:80px;">🐚</div>
+    </div>
+    <div class="modal-details">
+      <span class="royal-tag" id="modalRoyal">👑 إصدار ملكي</span>
+      <h2 id="modalTitle">اسم المنتج</h2>
+      <p id="modalDesc" style="color:var(--muted); font-size:14px; margin-bottom:10px;"></p>
+      <div id="modalStory" class="product-story"></div>
+      <div class="price" id="modalPrice">0.000 د.ك</div>
+      <a id="modalWaBtn" href="#" target="_blank" class="btn-wa">💬 اطلب على واتساب</a>
+    </div>
+  </div>
+</div>
+
+<!-- قسم تفاصيل التوصيل والشحن المحدث -->
 <section class="delivery-section" id="delivery">
   <div class="section-title" style="margin:20px 0;">
     <h2>🚚 تفاصيل التوصيل والشحن</h2>
@@ -190,8 +208,8 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
       <h3>🇰🇼 داخل الكويت</h3>
       <ul>
         <li><strong>المدة:</strong> 2 - 4 أيام عمل.</li>
-        <li><strong>التكلفة:</strong> مجاني (توصيل وتركيب مجاني).</li>
-        <li><strong>الدفع:</strong> عند الاستلام (COD) أو تحويل بنكي.</li>
+        <li><strong>التكلفة:</strong> مجاني (توصيل مجاني).</li>
+        <li><strong>الدفع:</strong> عند الاستلام أو رابط معتمد للدفع.</li>
         <li>يشمل جميع المناطق (العاصمة، حولي، الأحمدي، الجهراء، الفروانية).</li>
       </ul>
     </div>
@@ -201,35 +219,43 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
         <li>السعودية، الإمارات، قطر، البحرين، عمان.</li>
         <li><strong>المدة:</strong> 10 - 15 يوم عمل.</li>
         <li><strong>طريقة الشحن:</strong> بري أو جوي حسب الطلب.</li>
-        <li><strong>التغليف:</strong> تغليف خشبي ملكي (Wooden Crate) وتزويد برقم التتبع.</li>
+        <li>التغليف خشبي ملكي وتزويد برقم التتبع.</li>
       </ul>
     </div>
     <div class="delivery-card">
       <h3>🌍 الشحن العالمي</h3>
       <ul>
-        <li>مصر، الأردن، أوروبا، أمريكا وجميع العالم.</li>
+        <li>أوروبا، أمريكا وجميع العالم.</li>
         <li><strong>المدة:</strong> 10 - 15 يوم عمل.</li>
         <li><strong>طريقة الشحن:</strong> جوي للسرعة أو بحري للتوفير.</li>
         <li>تغليف ملكي مضاد للصدمات مع التتبع.</li>
       </ul>
     </div>
     <div class="delivery-card">
-      <h3>🏬 استلام من الورشة</h3>
+      <h3>🏺 التوصيل والتفصال والشحن من مصر للكويت</h3>
       <ul>
-        <li><strong>الموقع:</strong> ورشة أصالة التراث المصري بالكويت.</li>
-        <li><strong>المدة:</strong> فوري بالتنسيق المباشر.</li>
-        <li><strong>التكلفة:</strong> مجاني مع التغليف الفاخر.</li>
-        <li><strong>القطع الجاهزة:</strong> 1-2 يوم تجهيز | <strong>حسب الطلب:</strong> 15-20 يوم عمل.</li>
+        <li><strong>القطع الجاهزة:</strong> 1-2 يوم تجهيز وتوصيل.</li>
+        <li><strong>حسب الطلب:</strong> 15-25 يوم عمل للتفصيل.</li>
+        <li>ضمان أصالة مدى الحياة وثبات التطعيمات.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- حكاية الصنعة -->
+<!-- حكاية الصنعة المحدثة بالكامل -->
 <section class="story-section" id="story">
   <div class="story-box">
-    <h2 id="storyTitle">عاشق ومعشوق — ليست مجرد قطعة أثاث</h2>
-    <p id="storyText">في ورشتنا، الصدفة لا تُلصق… تُختار. نستورد الصدف من الهند وجدة، وتُقص كل حبة يدويًا بمقاس 2-3 ملم لتثبت بغراء عربي تقليدي على خشب الزان الأحمر الفاخر لتتحول إلى تحفة تُورث للأجيال.</p>
+    <h2 id="storyTitle">عاشق ومعشوق — حكاية فن التصديف العريق</h2>
+    <p id="storyText">
+      تعتبر صناعة الصدف المصري (أو فن التصديف) واحدة من أعرق الحرف التراثية اليدوية في مصر، حيث تمتد جذورها العميقة إلى العصور العباسية والفاطمية، وبلغت ذروة ازدهارها في العهد المملوكي. تعتمد هذه الحرفة الفريدة على المزاوجة بين صلابة خشب الأشجار وسحر الطبيعة البحرية الكامن في عرق اللؤلؤ الأبيض البراق المستخرج من البحر الأحمر والبحار العالمية، لإنتاج قطع فنية تبدأ من علب المجوهرات الصغيرة وتصل إلى صالونات وغرف نوم ملكية كاملة.
+    </p>
+    <p style="margin-top:15px;">
+      تمر عملية "التصديف" برحلة طويلة من العمل الشاق والدقة المتناهية التي تتطلب صبراً ومهارة استثنائية:<br>
+      • <strong>النجارة والتأسيس (الهيكل):</strong> يتم أولاً تصنيع هيكل القطعة الفنية (سواء علبة، طاولة، أو كرسي) باستخدام أجود أنواع الأخشاب الطبيعية، مثل خشب الزان الأحمر المبخر وخشب السويد لضمان متانة القطعة ومقاومتها للرطوبة عبر الزمن.<br>
+      • <strong>رسم التصميم الهندسي:</strong> يقوم الفنان الحرفي برسم نقوش وزخارف هندسية معقدة (غالبًا ما تكون إسلامية أو عربية تراثية) مباشرة على سطح الخشب باستخدام الأزميل وأدوات الحفر الدقيقة.<br>
+      • <strong>تقطيع الصدف وتشكيله:</strong> تُجلب الأصداف البحرية الطبيعية الخام، ويقوم الصدّاف بتقطيعها بدقة شديدة باستعمال منشار يدوي رفيع إلى قطع متناهية الصغر (مثلثات، مربعات، أو خطوط) لتناسب الرسمة الهندسية.<br>
+      • <strong>التطعيم والتعشيق:</strong> هنا تظهر تقنية التداخل؛ حيث تُغرس قطع الصدف بعناية داخل الحفر الخشبية وتُثبت بمواد قوية.
+    </p>
   </div>
 </section>
 
@@ -237,7 +263,7 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 <section class="story-section" id="custom" style="background:var(--ivory-soft); color:var(--ink); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="story-box">
     <h2 id="customTitle" style="color:var(--wine-deep)">تخيّلها أنت، ونصنعها لك.</h2>
-    <p id="customText" style="color:var(--muted)">قطعة بمقاس زاويتك، ونقشة من اختيارك (نجمة، عثماني، فرعوني، إسلامي). ننسّق معك كل تفصيلة بدقة متناهية (تجهيز خلال 15-20 يوم عمل).</p>
+    <p id="customText" style="color:var(--muted)">قطعة بمقاس زاويتك، ونقشة من اختيارك (نجمة، عثماني، فرعوني، إسلامي). ننسّق معك كل تفصيلة بدقة متناهية (تجهيز خلال 15-25 يوم عمل).</p>
     <a href="https://wa.me/96551118069?text=السلام%20عليكم%20🌹%20أرغب%20في%20تفصيل%20قطعة%20خاصة%20حسب%20الطلب." target="_blank" class="btn btn-gold" style="margin-top:20px;">💬 لنتحدث عن قطعتك الخاصة</a>
   </div>
 </section>
@@ -269,7 +295,7 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- نافذة تسجيل الدخول -->
+<!-- نافذة تسجيل الدخول للوحة التحكم -->
 <div class="admin-modal" id="loginModal">
   <div class="admin-box" style="max-width: 420px;">
     <div class="admin-close" onclick="closeLoginModal()">✕</div>
@@ -280,7 +306,7 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
   </div>
 </div>
 
-<!-- لوحة التحكم الاحترافية الشاملة -->
+<!-- لوحة التحكم الاحترافية -->
 <div class="admin-modal" id="adminPanelModal">
   <div class="admin-box">
     <div class="admin-close" onclick="closeAdminPanel()">✕</div>
@@ -288,14 +314,13 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
     
     <div class="admin-tabs">
       <button class="admin-tab-btn active" onclick="switchAdminTab(event, 'tab-prod')">1. المنتجات (<span id="tabProdBadge">10</span>)</button>
-      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-hero')">2. الغلاف والوسائط (فيديو/صورة)</button>
-      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-delivery-edit')">3. التوصيل والشحن</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-hero')">2. الغلاف والوسائط</button>
+      <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-delivery-edit')">3. الشحن والتوصيل</button>
       <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-identity')">4. اللوجو والهوية</button>
       <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-backup')">5. النسخ الاحتياطي (حل الكاش)</button>
       <button class="admin-tab-btn" onclick="switchAdminTab(event, 'tab-sec')">6. حساب المشرف (سري)</button>
     </div>
 
-    <!-- 1. إدارة وتعديل المنتجات -->
     <div id="tab-prod" class="admin-tab-content active">
       <div style="background:#faf6f0; padding:20px; border-radius:12px; margin-bottom:25px; border:1px solid var(--line);">
         <h3 id="formTitle" style="margin-bottom:15px; color:var(--wine)">➕ إضافة / تعديل منتج</h3>
@@ -324,9 +349,9 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
           <input type="text" id="p-price" class="form-control" placeholder="السعر الحالي (د.ك) *">
           <input type="text" id="p-old" class="form-control" placeholder="السعر القديم (د.ك)">
         </div>
-        <input type="text" id="p-compare" class="form-control" placeholder="مقارنة السوق (مثل: 🔥 السوق: 15-25 د.ك)">
-        <input type="text" id="p-image" class="form-control" placeholder="رابط الصورة أو الفيديو">
-        <label style="font-size:13px; font-weight:bold; margin-bottom:5px; display:block;">أو رفع صورة / فيديو من الجهاز:</label>
+        <input type="text" id="p-compare" class="form-control" placeholder="مقارنة السوق">
+        <input type="text" id="p-image" class="form-control" placeholder="رابط الصورة">
+        <label style="font-size:13px; font-weight:bold; margin-bottom:5px; display:block;">أو رفع صورة من الجهاز:</label>
         <input type="file" id="p-file" class="form-control" accept="image/*,video/*" onchange="handleProductFile(event)">
         <select id="p-stock" class="form-control">
           <option value="in">متوفر للتفصيل والتوصيل</option>
@@ -340,56 +365,43 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
       </div>
     </div>
 
-    <!-- 2. الغلاف والوسائط -->
     <div id="tab-hero" class="admin-tab-content">
-      <h3>🎬 التحكم في الغلاف (فيديو عائم MP4 أو صورة)</h3>
-      <label style="margin-top:10px; display:block;">رفع فيديو الغلاف (MP4):</label>
+      <h3>🎬 الغلاف (صورة أو فيديو MP4)</h3>
+      <label style="margin-top:10px; display:block;">رفع فيديو الغلاف:</label>
       <input type="file" class="form-control" accept="video/mp4" onchange="uploadHeroVideo(event)">
       <label>أو رفع صورة الغلاف:</label>
       <input type="file" class="form-control" accept="image/*" onchange="uploadHeroImage(event)">
-      <button class="btn-admin" style="background:#c0392b; margin-top:10px;" onclick="clearHeroMedia()">🗑️ إعادة الغلاف الافتراضي</button>
+      <button class="btn-admin" style="background:#c0392b; margin-top:10px;" onclick="clearHeroMedia()">🗑️ الغلاف الافتراضي</button>
     </div>
 
-    <!-- 3. التوصيل والشحن -->
     <div id="tab-delivery-edit" class="admin-tab-content">
-      <h3>🚚 تعديل إعدادات التوصيل والشحن</h3>
+      <h3>🚚 تعديل إعدادات التوصيل</h3>
       <label>نص الشريط العلوي:</label>
-      <input type="text" id="editTopbarText" class="form-control" placeholder="نص الشريط العلوي">
-      <label>ملاحظات التوصيل العامة:</label>
-      <textarea id="editDeliveryNotes" class="form-control" placeholder="ملاحظات الشحن وتفاصيل الأيام"></textarea>
-      <button class="btn-admin" onclick="saveDeliverySettings()">💾 حفظ إعدادات التوصيل</button>
+      <input type="text" id="editTopbarText" class="form-control">
+      <button class="btn-admin" onclick="saveDeliverySettings()">💾 حفظ</button>
     </div>
 
-    <!-- 4. اللوجو والهوية -->
     <div id="tab-identity" class="admin-tab-content">
-      <h3>🏺 اللوجو والهوية الرسمية</h3>
+      <h3>🏺 الهوية واللوجو</h3>
       <label>رفع اللوجو الأساسي:</label>
       <input type="file" class="form-control" accept="image/*" onchange="uploadLogoFile(event)">
       <label>اسم المتجر:</label>
       <input type="text" id="editStoreName" class="form-control">
-      <label>السلوجان الرسمي:</label>
-      <input type="text" id="editSlogan" class="form-control">
-      <button class="btn-admin" onclick="saveStoreIdentity()">💾 حفظ الهوية واللوجو</button>
+      <button class="btn-admin" onclick="saveStoreIdentity()">💾 حفظ الهوية</button>
     </div>
 
-    <!-- 5. النسخ الاحتياطي وتجاوز الكاش -->
     <div id="tab-backup" class="admin-tab-content">
-      <h3>💾 تصدير واستيراد التحديثات (حل الكاش)</h3>
-      <p style="font-size:13px; color:var(--muted); margin-bottom:15px;">
-        عند إجراء أي تعديلات، تصدير هذا الملف ورفعه إلى الاستضافة يضمن رؤية التحديث فوراً لجميع العملاء بدون مشاكل الكاش.
-      </p>
-      <button class="btn-admin" style="background:#27ae60; margin-bottom:20px;" onclick="exportDataFile()">📥 تصدير ملف التحديثات الكامل (JSON)</button>
-      <hr style="margin:20px 0;">
+      <h3>💾 النسخ الاحتياطي وتجاوز الكاش</h3>
+      <button class="btn-admin" style="background:#27ae60; margin-bottom:20px;" onclick="exportDataFile()">📥 تصدير ملف التحديثات (JSON)</button>
       <label>استيراد ملف تحديثات سابق:</label>
       <input type="file" class="form-control" accept=".json" onchange="importDataFile(event)">
     </div>
 
-    <!-- 6. بيانات المشرف السري -->
     <div id="tab-sec" class="admin-tab-content">
-      <h3>🔐 تحديث بيانات الدخول السرية</h3>
+      <h3>🔐 بيانات الدخول السرية</h3>
       <input type="email" id="adminNewEmail" class="form-control" placeholder="البريد الإلكتروني الجديد">
       <input type="password" id="adminNewPass" class="form-control" placeholder="كلمة المرور الجديدة">
-      <button class="btn-admin" onclick="saveAdminCredentials()">🔐 تحديث البيانات السرية</button>
+      <button class="btn-admin" onclick="saveAdminCredentials()">🔐 تحديث البيانات</button>
     </div>
 
   </div>
@@ -398,27 +410,25 @@ h1,h2,h3{font-family:'Amiri',serif;color:var(--wine-deep)}
 <script>
 let adminCreds = JSON.parse(localStorage.getItem('asala_admin_creds')) || { email: 'admin@asala.com', pass: '123456' };
 
-// المنتجات الـ 10 الأصلية مع كامل التفاصيل الملكية
 const defaultProducts = [
-  {id: 1, name: "مبخر الملكة حتشبسوت (صدف أبيض)", cat: "مباخر", royal: "👑 إصدار فرعوني ملكي", desc: "مبخر صدف صغير تراثي، مصنوع يدويًا من خشب الزان الفاخر ومزين بتطعيمات الصدف البحري الطبيعي.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد مبخرٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "15.000 د.ك", oldPrice: "25.000 د.ك", compare: "🔥 السوق: 15-25 د.ك", image: "", stock: "in"},
-  {id: 2, name: "طقم السلطان قايتباي (كرسيين + طاولة)", cat: "أثاث ملكي", royal: "👑 إصدار سلطاني", desc: "كرسيان مزخرفان بالصدف الطبيعي، خشب زان، قطعة فخمة للمجالس والدواوين.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد طقمٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "220.000 د.ك", oldPrice: "280.000 د.ك", compare: "🔥 السوق: 350+ د.ك", image: "", stock: "in"},
-  {id: 3, name: "كنسول الملك فاروق (3 أدراج)", cat: "بيوهات و مداخل", royal: "👑 إصدار ملكي", desc: "كنسول فاخر مطعّم بالصدف، خشب زان متين، 3 أدراج مقوسة.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد كنسولٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "220.000 د.ك", oldPrice: "280.000 د.ك", compare: "🔥 السوق: 350+ د.ك", image: "", stock: "in"},
-  {id: 4, name: "شطرنج الملك رمسيس الثاني", cat: "طولات زهر و شطرنج", royal: "👑 إصدار فرعوني", desc: "شطرنج علبة مطعّم بالصدف 100%، مقاس 30×30 سم، قطع ملكية.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد شطرنجٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "85.000 د.ك", oldPrice: "110.000 د.ك", compare: "🔥 السوق: 150+ د.ك", image: "", stock: "in"},
-  {id: 5, name: "صندوق أدراج الأمير توت عنخ آمون", cat: "صناديق و شكمجيات", royal: "👑 إصدار فرعوني", desc: "صندوق أدراج للبخور والمجوهرات، 3 أدراج، مطعّم يدويًا بالكامل.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد صندوقٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "120.000 د.ك", oldPrice: "160.000 د.ك", compare: "🔥 السوق: 200+ د.ك", image: "", stock: "in"},
-  {id: 6, name: "تابلوة الملكة كليوباترا", cat: "لوحات قرآنية و براويز", royal: "👑 إصدار ملكي", desc: "تابلوة عروسة 60 سم، جدارية فاخرة مطعمة بالصدف ناصع البياض.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد تابلوةٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "120.000 د.ك", oldPrice: "160.000 د.ك", compare: "🔥 السوق: 200+ د.ك", image: "", stock: "in"},
-  {id: 7, name: "ترابيزة السلطان صلاح الدين", cat: "ترابيزات", royal: "👑 إصدار سلطاني", desc: "ترابيزة صدف، طاولة خدمة مثمنة بنقوش إسلامية دقيقة.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، تولد ترابيزةٌ تروي حكايةً من الفخامة والجمال. 🤎", price: "75.000 د.ك", oldPrice: "100.000 د.ك", compare: "🔥 السوق: 120+ د.ك", image: "", stock: "in"},
-  {id: 8, name: "كرسي محمد علي باشا", cat: "أثاث مكتبي", royal: "👑 إصدار ملكي", desc: "كرسي مشبك أرابيسك، قابل للطي، مصنوع من خشب الزان الأحمر.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد كرسيٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "55.000 د.ك", oldPrice: "75.000 د.ك", compare: "🔥 السوق: 90+ د.ك", image: "", stock: "in"},
-  {id: 9, name: "طقم صواني الملكة نفرتيتي", cat: "صواني تقديم و كسترات", royal: "👑 إصدار فرعوني", desc: "طقم صواني هلال 3 قطع، مطعّم بالصدف الطبيعي الفاخر.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد طقم صواني يروي حكايةً من الفخامة والجمال. 🤎", price: "5.000 د.ك", oldPrice: "6.500 د.ك", compare: "🔥 السوق: 8+ د.ك", image: "", stock: "in"},
-  {id: 10, name: "طقم صواني السلطان سليمان القانوني", cat: "صواني تقديم و كسترات", royal: "👑 إصدار سلطاني", desc: "طقم صواني بيضاوي من الداخل 3 قطع، مطعّم بالصدف والأرابيسك.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد طقم صواني يروي حكايةً من الفخامة والجمال. 🤎", price: "5.000 د.ك", oldPrice: "6.500 د.ك", compare: "🔥 السوق: 8+ د.ك", image: "", stock: "in"}
+  {id: 1, name: "مبخر الملكة حتشبسوت (صدف أبيض)", cat: "مباخر", royal: "👑 إصدار فرعوني ملكي", desc: "مبخر صدف صغير تراثي، مصنوع يدويًا من خشب الزان الفاخر ومزين بتطعيمات الصدف البحري الطبيعي.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد مبخرٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "15.000 د.ك", oldPrice: "25.000 د.ك", stock: "in"},
+  {id: 2, name: "طقم السلطان قايتباي (كرسيين + طاولة)", cat: "أثاث ملكي", royal: "👑 إصدار سلطاني", desc: "كرسيان مزخرفان بالصدف الطبيعي، خشب زان، قطعة فخمة للمجالس والدواوين.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد طقمٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "220.000 د.ك", oldPrice: "280.000 د.ك", stock: "in"},
+  {id: 3, name: "كنسول الملك فاروق (3 أدراج)", cat: "بيوهات و مداخل", royal: "👑 إصدار ملكي", desc: "كنسول فاخر مطعّم بالصدف، خشب زان متين، 3 أدراج مقوسة.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد كنسولٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "220.000 د.ك", oldPrice: "280.000 د.ك", stock: "in"},
+  {id: 4, name: "شطرنج الملك رمسيس الثاني", cat: "طولات زهر و شطرنج", royal: "👑 إصدار فرعوني", desc: "شطرنج علبة مطعّم بالصدف 100%, مقاس 30×30 سم، قطع ملكية.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد شطرنجٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "85.000 د.ك", oldPrice: "110.000 د.ك", stock: "in"},
+  {id: 5, name: "صندوق أدراج الأمير توت عنخ آمون", cat: "صناديق و شكمجيات", royal: "👑 إصدار فرعوني", desc: "صندوق أدراج للبخور والمجوهرات، 3 أدراج، مطعّم يدويًا بالكامل.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد صندوقٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "120.000 د.ك", oldPrice: "160.000 د.ك", stock: "in"},
+  {id: 6, name: "تابلوة الملكة كليوباترا", cat: "لوحات قرآنية و براويز", royal: "👑 إصدار ملكي", desc: "تابلوة عروسة 60 سم، جدارية فاخرة مطعمة بالصدف ناصع البياض.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد تابلوةٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "120.000 د.ك", oldPrice: "160.000 د.ك", stock: "in"},
+  {id: 7, name: "ترابيزة السلطان صلاح الدين", cat: "ترابيزات", royal: "👑 إصدار سلطاني", desc: "ترابيزة صدف، طاولة خدمة مثمنة بنقوش إسلامية دقيقة.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، تولد ترابيزةٌ تروي حكايةً من الفخامة والجمال. 🤎", price: "75.000 د.ك", oldPrice: "100.000 د.ك", stock: "in"},
+  {id: 8, name: "كرسي محمد علي باشا", cat: "أثاث مكتبي", royal: "👑 إصدار ملكي", desc: "كرسي مشبك أرابيسك، قابل للطي، مصنوع من خشب الزان الأحمر.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد كرسيٌ يروي حكايةً من الفخامة والجمال. 🤎", price: "55.000 د.ك", oldPrice: "75.000 د.ك", stock: "in"},
+  {id: 9, name: "طقم صواني الملكة نفرتيتي", cat: "صواني تقديم و كسترات", royal: "👑 إصدار فرعوني", desc: "طقم صواني هلال 3 قطع، مطعّم بالصدف الطبيعي الفاخر.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد طقم صواني يروي حكايةً من الفخامة والجمال. 🤎", price: "5.000 د.ك", oldPrice: "6.500 د.ك", stock: "in"},
+  {id: 10, name: "طقم صواني السلطان سليمان القانوني", cat: "صواني تقديم و كسترات", royal: "👑 إصدار سلطاني", desc: "طقم صواني بيضاوي من الداخل 3 قطع، مطعّم بالصدف والأرابيسك.", story: "حين يلتقي عبق الأصالة بفنّ الصدف البحري، يولد طقم صواني يروي حكايةً من الفخامة والجمال. 🤎", price: "5.000 د.ك", oldPrice: "6.500 د.ك", stock: "in"}
 ];
 
-let products = JSON.parse(localStorage.getItem('asala_products_v4')) || defaultProducts;
-let siteMedia = JSON.parse(localStorage.getItem('asala_media_v4')) || { logo: '', heroVid: '', heroImg: '' };
-let storeTexts = JSON.parse(localStorage.getItem('asala_texts_v4')) || {
+let products = JSON.parse(localStorage.getItem('asala_products_v5')) || defaultProducts;
+let siteMedia = JSON.parse(localStorage.getItem('asala_media_v5')) || { logo: '', heroVid: '', heroImg: '' };
+let storeTexts = JSON.parse(localStorage.getItem('asala_texts_v5')) || {
   name: "أصالة التراث المصري",
   slogan: "عاشق ومعشوق — فن يدوي تم تصنيعه بحب من القلب ✨ صُنع في مصر",
-  topbar: "🚚 توصيل من الكويت إلى الخليج والعالم — تفصيل 15-20 يومًا — ضمان أصالة مدى الحياة",
-  deliveryNotes: "نصل إليك أينما كنت بتغليف ملكي وحماية كاملة لقطعتك"
+  topbar: "🚚 توصيل من الكويت إلى الخليج والعالم — تفصيل 15-20 يومًا — ضمان أصالة مدى الحياة"
 };
 
 const waNumber = "96551118069";
@@ -428,7 +438,6 @@ function renderAll() {
   document.getElementById('footerName').textContent = storeTexts.name;
   document.getElementById('sloganText').textContent = storeTexts.slogan;
   document.getElementById('topbarText').textContent = storeTexts.topbar;
-  document.getElementById('deliveryNotes').textContent = storeTexts.deliveryNotes;
 
   if(siteMedia.logo) document.getElementById('brandLogo').src = siteMedia.logo;
 
@@ -443,28 +452,48 @@ function renderAll() {
 
   const grid = document.getElementById('productsGrid');
   grid.innerHTML = products.map(p => `
-    <div class="product-card" onclick="quickBuy(${p.id})">
+    <div class="product-card" onclick="openProductModal(${p.id})">
       <div class="product-img">
-        ${p.image ? (p.image.includes('data:video') ? `<video autoplay muted loop><source src="${p.image}"></video>` : `<img src="${p.image}" alt="${p.name}">`) : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:50px;">🐚</div>`}
+        ${p.image ? `<img src="${p.image}" alt="${p.name}">` : `<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:50px;">🐚</div>`}
         <span class="badge">${p.stock === 'in' ? 'متوفر للتفصيل' : 'نفدت الكمية'}</span>
       </div>
       <div class="product-info">
         <span class="royal-tag">${p.royal || '👑 إصدار ملكي'}</span>
         <h3>${p.name}</h3>
         <p>${p.desc}</p>
-        ${p.story ? `<div class="product-story">${p.story}</div>` : ''}
         <div class="product-price">${p.price} ${p.oldPrice ? `<span style="font-size:14px;color:#999;text-decoration:line-through;margin-right:8px">${p.oldPrice}</span>` : ''}</div>
-        <a href="https://wa.me/${waNumber}?text=${encodeURIComponent('السلام عليكم 🌹\nأرغب في طلب: ' + p.name + '\nالسعر: ' + p.price)}" target="_blank" class="btn-wa" onclick="event.stopPropagation()">💬 اسأل على واتساب</a>
+        <button class="btn-wa" onclick="event.stopPropagation(); openProductModal(${p.id});">🔍 عرض التحفة والتفاصيل</button>
       </div>
     </div>
   `).join('');
 }
 
-function quickBuy(id) {
+// فتح نافذة المعاينة المنبثقة
+function openProductModal(id) {
   const p = products.find(x => x.id === id);
   if(!p) return;
-  const msg = `السلام عليكم 🌹\nأرغب في طلب:\n*${p.name}*\nالسعر: *${p.price}*`;
-  window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+  
+  const imgCon = document.getElementById('modalImgContainer');
+  if(p.image) {
+    imgCon.innerHTML = `<img src="${p.image}" alt="${p.name}">`;
+  } else {
+    imgCon.innerHTML = `<div style="font-size:80px;">🐚</div>`;
+  }
+
+  document.getElementById('modalRoyal').textContent = p.royal || '👑 إصدار ملكي';
+  document.getElementById('modalTitle').textContent = p.name;
+  document.getElementById('modalDesc').textContent = p.desc;
+  document.getElementById('modalStory').textContent = p.story || '';
+  document.getElementById('modalPrice').textContent = p.price;
+  
+  const msg = `السلام عليكم 🌹\nأرغب في الاستفسار عن التحفة:\n*${p.name}*\nالسعر: *${p.price}*`;
+  document.getElementById('modalWaBtn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+
+  document.getElementById('productModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('productModal').classList.remove('open');
 }
 
 function openLoginModal() { document.getElementById('loginModal').classList.add('open'); }
@@ -478,9 +507,7 @@ function checkAdminLogin() {
     document.getElementById('adminPanelModal').classList.add('open');
     renderAdminProductsList();
     document.getElementById('editStoreName').value = storeTexts.name;
-    document.getElementById('editSlogan').value = storeTexts.slogan;
     document.getElementById('editTopbarText').value = storeTexts.topbar;
-    document.getElementById('editDeliveryNotes').value = storeTexts.deliveryNotes;
     document.getElementById('adminNewEmail').value = adminCreds.email;
   } else {
     alert('البريد أو كلمة المرور غير صحيحة!');
@@ -535,7 +562,7 @@ function saveProductData() {
     products.unshift(pData);
   }
 
-  localStorage.setItem('asala_products_v4', JSON.stringify(products));
+  localStorage.setItem('asala_products_v5', JSON.stringify(products));
   renderAll();
   renderAdminProductsList();
   resetForm();
@@ -588,7 +615,7 @@ function renderAdminProductsList() {
 function deleteProduct(idx) {
   if(confirm('هل أنت متأكد من حذف هذا المنتج؟')) {
     products.splice(idx, 1);
-    localStorage.setItem('asala_products_v4', JSON.stringify(products));
+    localStorage.setItem('asala_products_v5', JSON.stringify(products));
     renderAll();
     renderAdminProductsList();
   }
@@ -601,7 +628,7 @@ function uploadHeroVideo(event) {
     reader.onload = function(e) {
       siteMedia.heroVid = e.target.result;
       siteMedia.heroImg = "";
-      localStorage.setItem('asala_media_v4', JSON.stringify(siteMedia));
+      localStorage.setItem('asala_media_v5', JSON.stringify(siteMedia));
       renderAll();
       alert('🎬 تم رفع وتشغيل الفيديو العائم للغلاف!');
     };
@@ -616,7 +643,7 @@ function uploadHeroImage(event) {
     reader.onload = function(e) {
       siteMedia.heroImg = e.target.result;
       siteMedia.heroVid = "";
-      localStorage.setItem('asala_media_v4', JSON.stringify(siteMedia));
+      localStorage.setItem('asala_media_v5', JSON.stringify(siteMedia));
       renderAll();
       alert('🖼️ تم رفع صورة الغلاف بنجاح!');
     };
@@ -627,7 +654,7 @@ function uploadHeroImage(event) {
 function clearHeroMedia() {
   siteMedia.heroVid = "";
   siteMedia.heroImg = "";
-  localStorage.setItem('asala_media_v4', JSON.stringify(siteMedia));
+  localStorage.setItem('asala_media_v5', JSON.stringify(siteMedia));
   renderAll();
 }
 
@@ -637,7 +664,7 @@ function uploadLogoFile(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
       siteMedia.logo = e.target.result;
-      localStorage.setItem('asala_media_v4', JSON.stringify(siteMedia));
+      localStorage.setItem('asala_media_v5', JSON.stringify(siteMedia));
       renderAll();
       alert('🏺 تم تحديث اللوجو الأساسي!');
     };
@@ -647,16 +674,14 @@ function uploadLogoFile(event) {
 
 function saveStoreIdentity() {
   storeTexts.name = document.getElementById('editStoreName').value;
-  storeTexts.slogan = document.getElementById('editSlogan').value;
-  localStorage.setItem('asala_texts_v4', JSON.stringify(storeTexts));
+  localStorage.setItem('asala_texts_v5', JSON.stringify(storeTexts));
   renderAll();
   alert('✅ تم حفظ الهوية بنجاح!');
 }
 
 function saveDeliverySettings() {
   storeTexts.topbar = document.getElementById('editTopbarText').value;
-  storeTexts.deliveryNotes = document.getElementById('editDeliveryNotes').value;
-  localStorage.setItem('asala_texts_v4', JSON.stringify(storeTexts));
+  localStorage.setItem('asala_texts_v5', JSON.stringify(storeTexts));
   renderAll();
   alert('✅ تم حفظ إعدادات التوصيل بنجاح!');
 }
@@ -693,9 +718,9 @@ function importDataFile(event) {
         if(imported.media) siteMedia = imported.media;
         if(imported.texts) storeTexts = imported.texts;
         if(imported.creds) adminCreds = imported.creds;
-        localStorage.setItem('asala_products_v4', JSON.stringify(products));
-        localStorage.setItem('asala_media_v4', JSON.stringify(siteMedia));
-        localStorage.setItem('asala_texts_v4', JSON.stringify(storeTexts));
+        localStorage.setItem('asala_products_v5', JSON.stringify(products));
+        localStorage.setItem('asala_media_v5', JSON.stringify(siteMedia));
+        localStorage.setItem('asala_texts_v5', JSON.stringify(storeTexts));
         localStorage.setItem('asala_admin_creds', JSON.stringify(adminCreds));
         renderAll();
         renderAdminProductsList();
